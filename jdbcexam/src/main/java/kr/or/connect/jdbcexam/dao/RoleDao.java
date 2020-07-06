@@ -5,6 +5,10 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.mysql.cj.protocol.Resultset;
 
 import kr.or.connect.jdbcexam.dto.Role;
 
@@ -92,7 +96,7 @@ public class RoleDao {
 		
 	}
 	
-	// 데이터를 입력하는 메소드 
+	// 데이터를 입력하는 메소드 insert 기능
 	public int addRole(Role role) {
 		int insertCount = 0;
 		
@@ -147,5 +151,136 @@ public class RoleDao {
 		
 	}
 	
+	// Role을 모두 가져오는(복수개) 메소드
+	public List<Role> getRoles() {
+		List<Role> list = new ArrayList<>();
+		// jdbc 연동
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		
+		// sql 쿼리 작성부(변수선언)
+		String sql = "SELECT description, role_id FROM role ORDER BY role_id desc";
+		
+		try (Connection conn = DriverManager.getConnection(dburl, dbuser, dbpasswd);
+			PreparedStatement ps = conn.prepareStatement(sql)) {
+			// try-with-resource 문법 
+			// 이렇게하면 사용한 객체를 알아서 close처리
+			try (ResultSet rs = ps.executeQuery()) {
+				// resultset 내용물 얻어옴 
+				
+				while (rs.next()) {// 있으면 true 리턴하고 커서움직임 
+					String description = rs.getString(1);
+					int id = rs.getInt("role_id");
+					Role role = new Role(id, description);
+					// 롤 객체에 정보를 담고
+					list.add(role); // 리스트에 롤 객체를 담음 
+				}
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			
+			}
+			
+		} 
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return list;
+		
+	}
 	
-}
+	public int deleteRole(Integer roleId) {
+		int deleteCount = 0;
+		
+		Connection conn = null;
+		PreparedStatement ps = null;
+		
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			conn = DriverManager.getConnection(dburl, dbuser, dbpasswd);
+			String sql = "DELETE FROM role WHERE role_id = ?";
+			// sql 쿼리 만들어서 ps에 넣음
+			ps = conn.prepareStatement(sql);
+			// roleid를 첫 번째 물음표에 집어넣음
+			ps.setInt(1, roleId);
+			
+			// 몇개의 role이 삭제되었는지 int로 반환
+			deleteCount = ps.executeUpdate();
+			
+			
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			if (ps != null) {
+				try {
+					conn.close();
+				} catch (Exception e2) {
+					e2.printStackTrace();
+				}
+				
+			}
+		}
+		return deleteCount;
+		
+	}
+		
+
+	public int updateRole(Role role) {
+		int updateCount = 0;
+		
+		Connection conn = null;
+		PreparedStatement ps = null;
+		
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			conn = DriverManager.getConnection(dburl, dbuser, dbpasswd);
+			String sql = "UPDATE role SET description = ? where role_id = ?";
+			
+			ps = conn.prepareStatement(sql);
+			
+			ps.setString(1, role.getDescription());
+			ps.setInt(2, role.getRoleId());
+			
+			updateCount = ps.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if( ps != null) {
+				try {
+					ps.close();
+				} catch(Exception ex) {
+					ex.printStackTrace();
+				}
+			} // if문 종결
+			
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (Exception e2) {
+					e2.printStackTrace();
+				}
+				
+			} // if문 종결
+			
+			
+		} // finally 종결
+		
+		return updateCount;
+		
+		
+		
+		
+	}
+	
+	
+		
+	}
+	
