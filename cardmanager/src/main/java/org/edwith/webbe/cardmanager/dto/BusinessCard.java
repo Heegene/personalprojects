@@ -1,6 +1,8 @@
 package org.edwith.webbe.cardmanager.dto;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 public class BusinessCard {
     private String name;
@@ -49,11 +51,13 @@ public class BusinessCard {
 
     @Override
     public String toString() {
+    	SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy", Locale.ENGLISH);
+    	String formatteddate = sdf.format(createDate);
         return "BusinessCard{" +
                 "name='" + name + '\'' +
                 ", phone='" + phone + '\'' +
                 ", companyName='" + companyName + '\'' +
-                ", createDate=" + createDate +
+                ", createDate=" + formatteddate +
                 '}';
     }
 }

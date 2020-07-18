@@ -4,12 +4,16 @@ import org.edwith.webbe.cardmanager.dao.BusinessCardManagerDao;
 import org.edwith.webbe.cardmanager.dto.BusinessCard;
 import org.edwith.webbe.cardmanager.ui.CardManagerUI;
 
+import java.sql.SQLException;
+import java.util.Date;
 import java.util.List;
 
 public class CardManager {
-    public static void main(String[] args){
+    public static void main(String[] args) throws SQLException{
         CardManagerUI cardManagerUI = CardManagerUI.getInstance();
         BusinessCardManagerDao businessCardManagerDao = new BusinessCardManagerDao();
+        Date today = new Date();
+        System.out.println(today);
 
         while_loop:
         while(true) {
@@ -18,7 +22,7 @@ public class CardManager {
             switch(menuNumber){
                 case 1 :
                     BusinessCard businessCard = cardManagerUI.inputBusinessCard();
-//                    businessCardManagerDao.addBusinessCard(businessCard);
+                    businessCardManagerDao.addBusinessCard(businessCard);
                     break;
                 case 2 :
                     String searchKeyword = cardManagerUI.getSearchKeyword();
