@@ -12,8 +12,6 @@ public class CardManager {
     public static void main(String[] args) throws SQLException{
         CardManagerUI cardManagerUI = CardManagerUI.getInstance();
         BusinessCardManagerDao businessCardManagerDao = new BusinessCardManagerDao();
-        Date today = new Date();
-        System.out.println(today);
 
         while_loop:
         while(true) {

@@ -85,7 +85,7 @@ public class BusinessCardManagerDao {
 			ps.setString(3, companyName);
 
 			addCount = ps.executeUpdate();
-			System.out.println(addCount);
+			System.out.println(addCount + " 건의 입력이 완료되었습니다.");
 
 		} catch (Exception e) {
 			e.printStackTrace();
