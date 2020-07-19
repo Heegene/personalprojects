@@ -9,6 +9,13 @@
  Spring 컨테이너는 이런 객체를 하나만 생성해서 가지고 있음(싱글턴 패턴)
  -->
  <bean id="userBean" class="kr.or.connect.diexam01.UserBean"> </bean>
+ <bean id="e" class="kr.or.connect.diexam01.Engine" />
+ 	<bean id="c" class="kr.or.connect.diexam01.Car"> 
+ 		<property name="engine" ref="e"></property>
+ 		<!-- car c 객체를 Spring container가 생성하게 하고,
+ 		     해당 객체 c는 engine e를 참조하게 함 setengine 을 e로 할것 -->
+ 	</bean>
+ 
  </beans>
  
  
