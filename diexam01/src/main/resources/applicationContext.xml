@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+ 
+ <!-- 스프링이 객체를 생성할 수 있도록 해당 bean 정보를 알려줌
+ Spring 컨테이너에게 알려 줄 때는 패키지 명까지 알려줘야 함
+ Spring 컨테이너는 이런 객체를 하나만 생성해서 가지고 있음(싱글턴 패턴)
+ -->
+ <bean id="userBean" class="kr.or.connect.diexam01.UserBean"> </bean>
+ </beans>
+ 
+ 
+ 
