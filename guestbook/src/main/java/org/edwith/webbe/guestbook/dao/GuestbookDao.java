@@ -17,7 +17,7 @@ public class GuestbookDao {
 		List<Guestbook> list = new ArrayList<>();
 		String sql = "SELECT * FROM guestbook ORDER BY id DESC";
 
-		try (   // try-with-resources 사용(automatic close 처리용)
+		try (   // try-with-resources 사용(automatic close 처리용 - meomry leak 방지 )
 				Connection conn = DBUtil.getConnection();
 				Statement stmt = conn.createStatement();
 				ResultSet rs = stmt.executeQuery(sql);     )
@@ -56,7 +56,8 @@ public class GuestbookDao {
 				int resultcount = 0;
 				
 				// ps.setLong(1, guestbook.getId()+1);
-				// 이부분 MySQL때 수정하기 
+				// 이부분 MySQL버전으로 작성 시 추가 수정이 필요함
+				// MySql에서 auto increment로 처리할 것 
 				ps.setLong(1, 1991);
 				
 				ps.setString(2, guestbook.getName());
