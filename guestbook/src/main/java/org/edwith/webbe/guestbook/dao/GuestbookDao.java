@@ -58,7 +58,7 @@ public class GuestbookDao {
 				// ps.setLong(1, guestbook.getId()+1);
 				// 이부분 MySQL버전으로 작성 시 추가 수정이 필요함
 				// MySql에서 auto increment로 처리할 것 
-				ps.setLong(1, 1991);
+				ps.setLong(1, 1991); // 임시로 id 값을 넣어주었음
 				
 				ps.setString(2, guestbook.getName());
 				ps.setString(3, guestbook.getContent());
