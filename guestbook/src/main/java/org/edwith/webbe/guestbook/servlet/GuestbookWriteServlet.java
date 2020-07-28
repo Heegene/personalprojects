@@ -40,7 +40,7 @@ public class GuestbookWriteServlet extends HttpServlet {
 		}
     	
     
-    	response.sendRedirect("http://localhost:8085/guestbook/guestbooks");
+    	response.sendRedirect("http://localhost:8000/guestbook/guestbooks");
     
     	
     }

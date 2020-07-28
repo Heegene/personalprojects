@@ -46,7 +46,7 @@ public class GuestbookDao {
 	public void addGuestbook(Guestbook guestbook) throws SQLException {
 		// GuestBook 형태의 argument guestbook을 받아서 진행할 것 
 		// MySQL 버전으로할때는 sysdate 안되므로 참고 및 수정
-		String sql = "INSERT INTO guestbook VALUES (?, ?, ?, sysdate)";
+		String sql = "INSERT INTO guestbook VALUES (id, ?, ?, now())";
 
 		try ( // try-with-resources 사용(automatic close 처리용)
 				Connection conn = DBUtil.getConnection();
@@ -55,13 +55,12 @@ public class GuestbookDao {
 		   { // try 절 시작
 				int resultcount = 0;
 				
-				// ps.setLong(1, guestbook.getId()+1);
-				// 이부분 MySQL버전으로 작성 시 추가 수정이 필요함
-				// MySql에서 auto increment로 처리할 것 
-				ps.setLong(1, 1991); // 임시로 id 값을 넣어주었음
+				// Mysql 버전은 auto increment 가 id에 적용되었으므로
+				// 그냥 id를 넣어주고, Oracle로 적용했을 때는
+				// max 값에서 +1 이런식으로 설정해도 됨 
 				
-				ps.setString(2, guestbook.getName());
-				ps.setString(3, guestbook.getContent());
+				ps.setString(1, guestbook.getName());
+				ps.setString(2, guestbook.getContent());
 				
 				resultcount = ps.executeUpdate();
 				
@@ -73,8 +72,6 @@ public class GuestbookDao {
 			
 		   }
 
-			
-		
 		
 	}
 }
