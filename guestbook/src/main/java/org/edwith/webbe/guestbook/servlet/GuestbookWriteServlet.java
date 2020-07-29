@@ -33,18 +33,15 @@ public class GuestbookWriteServlet extends HttpServlet {
     	
     	
     	try {
-			dao.addGuestbook(guestbook);
+    		dao.addGuestbook(guestbook);
+    		
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
     	
     
-<<<<<<< HEAD
-    	response.sendRedirect("http://localhost:8085/guestbook/guestbooks");
-=======
     	response.sendRedirect("http://localhost:8000/guestbook/guestbooks");
->>>>>>> 6a8e7501abac37ad1a372ba49caabe1142482439
     
     	
     }
