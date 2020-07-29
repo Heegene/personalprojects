@@ -2,8 +2,8 @@ package kr.or.connect.guestbook.service;
 
 import java.util.List;
 
-import kr.or.connect.guestbook.dto.Guestbook;
 
+import kr.or.connect.guestbook.dto.Guestbook;
 
 public interface GuestbookService {
 	

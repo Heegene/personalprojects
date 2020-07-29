@@ -10,6 +10,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+
 import kr.or.connect.guestbook.dto.Guestbook;
 import kr.or.connect.guestbook.service.GuestbookService;
 
@@ -23,7 +24,7 @@ public class GuestbookController {
 	
 	// path가 /list로 들어왔을 때 처리할 부분 
 	@GetMapping(path="/list")
-	public String list(@RequestParam(
+	public String list(@RequestParam (
 										name = "start", // start 라는 값을 꺼내서 사용 
 										required= false,
 										defaultValue = "0" // 값이 없는 경우 0이라는 디폴트 값을 줌(0부터 시작하므로)
@@ -46,7 +47,7 @@ public class GuestbookController {
 		// 페이지의 수 만큼 start의 값을 리스트로 저장
 		// 예시: 페이지수가 3이면 0, 5, 10 이렇게 저장됨
 		// list?star=0, list?start=5, list?start=10 으로 링크가 걸림
-		List<Integer> pageStartList = new ArrayList<Integer>();
+		List<Integer> pageStartList = new ArrayList<>();
 		for (int i = 0; i < pageCount; i++) {
 			pageStartList.add(i * GuestbookService.LIMIT);
 		}

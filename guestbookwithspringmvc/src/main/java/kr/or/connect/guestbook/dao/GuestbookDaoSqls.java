@@ -1,6 +1,6 @@
 package kr.or.connect.guestbook.dao;
 
-public class GuestDaoSqls {
+public class GuestbookDaoSqls {
 	public static final String SELECT_PAGING = "SELECT id, name, content, regdate FROM guestbookmvc ORDER BY id DESC limit :start, :limit";
 	
 	// Oracle 버전 rownum으로 limit 걸기
