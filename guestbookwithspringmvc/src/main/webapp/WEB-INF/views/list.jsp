@@ -26,7 +26,7 @@
 	<br>
 	
 	<!--  페이지 링크가 나오는 부분 -->
-	<c:forEach items="${pageStartList }" var="pageIndex" verStatus="status">
+	<c:forEach items="${pageStartList }" var="pageIndex" varStatus="status">
 		<a href="list?start=${pageIndex }">${status.index + 1}</a> &nbsp;&nbsp;		
 	</c:forEach>
 
