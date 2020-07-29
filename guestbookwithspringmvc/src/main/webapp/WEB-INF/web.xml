@@ -36,8 +36,8 @@
   	<param-name>contextConfigLocation</param-name>
   	<param-value>kr.or.connect.guestbook.config.WebMVCContextConfiguration</param-value>
   </init-param>
-  
   <load-on-startup>1</load-on-startup>
+  
   
   </servlet>
   
