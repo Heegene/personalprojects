@@ -1,6 +1,7 @@
 package kr.or.connect.guestbook.service.impl;
 
 import java.util.Date;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,14 +14,15 @@ import kr.or.connect.guestbook.dto.Guestbook;
 import kr.or.connect.guestbook.dto.Log;
 import kr.or.connect.guestbook.service.GuestbookService;
 
-// dto에 repository annotation을 붙여 준 것처럼 service에는 service annotation을 붙임 
 @Service
-public class GuestbookServiceimpl implements GuestbookService {
+public class GuestbookServiceImpl implements GuestbookService {
+// dto에 repository annotation을 붙여 준 것처럼 service에는 service annotation을 붙임 
 	
 	@Autowired
 	GuestbookDao guestbookDao;
 	
 	// autowired annotation을 달면 알아서 객체생성을 도와줌
+	
 	@Autowired
 	LogDao logDao;
 	
@@ -48,7 +50,7 @@ public class GuestbookServiceimpl implements GuestbookService {
 		// 삭제를 한 후 Log에 delete action에 대한 로그를 남김 (id, ip, method, 삭제일자)
 		int deleteCount = guestbookDao.deleteById(id);
 		Log log = new Log();
-		log.setId(id);
+		// log.setId(id);
 		log.setIp(ip);
 		log.setMethod("delete");
 		log.setRegdate(new Date());
@@ -65,7 +67,7 @@ public class GuestbookServiceimpl implements GuestbookService {
 		guestbook.setId(id); // id값도 채워져 guestbook이 완성됨 
 		
 		Log log = new Log();
-		log.setId(id);
+		// log.setId(id);
 		log.setIp(ip);
 		log.setMethod("insert");
 		log.setRegdate(new Date());

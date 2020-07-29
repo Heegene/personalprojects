@@ -1,6 +1,7 @@
 package kr.or.connect.guestbook.controller;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,8 @@ import kr.or.connect.guestbook.service.GuestbookService;
 
 @Controller
 public class GuestbookController {
+	
+	
 	@Autowired
 	GuestbookService guestbookService;
 	
@@ -45,7 +48,7 @@ public class GuestbookController {
 		// list?star=0, list?start=5, list?start=10 으로 링크가 걸림
 		List<Integer> pageStartList = new ArrayList<Integer>();
 		for (int i = 0; i < pageCount; i++) {
-			pageStartList.add(i * guestbookService.LIMIT);
+			pageStartList.add(i * GuestbookService.LIMIT);
 		}
 		
 		model.addAttribute("list", list);
