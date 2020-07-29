@@ -6,20 +6,33 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>방명록 목록</title>
+<style type="text/css">
+	hr {
+	color: blue;
+	}
+	
+	h2 {
+	color: gray;
+	text-align: center;
+	}
+
+</style>
 </head>
 <body>
 
-	<h1>방명록</h1>
+	<h2>방명록</h2>
 	<br> 방명록 전체 수 : ${count }
 	<br>
 	<br>
 
 	<!--  방명록 목록 출력  -->
 	<c:forEach items="${list }" var="guestbook">
+	<br>
 	${guestbook.id } <br>
 	${guestbook.name } <br>
 	${guestbook.content } <br>
 	${guestbook.regdate } <br>
+	<br>
 	<hr>
 	</c:forEach>
 
@@ -34,9 +47,10 @@
 	<br>
 	
 	<form action="write" method="post">
-		name : <input type="text" name="name" required="required"> <br>
+		name : <input type="text" name="name" required="required"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <button type="submit">등록</button>
+		<br>
+		<br>
 		<textarea rows="6" cols="60" name="content"></textarea> <br>
-		<button type="submit">등록</button>
 	</form>
 
 </body>
