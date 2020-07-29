@@ -45,7 +45,7 @@ public class GuestbookServiceImpl implements GuestbookService {
 	}
 
 	@Override
-	@Transactional(readOnly=false)
+	@Transactional(readOnly =false)
 	public int deleteGuestbook(Long id, String ip) {
 		// 삭제를 한 후 Log에 delete action에 대한 로그를 남김 (id, ip, method, 삭제일자)
 		int deleteCount = guestbookDao.deleteById(id);

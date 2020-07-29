@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import kr.or.connect.guestbook.dto.Guestbook;
 
-import static kr.or.connect.guestbook.dao.GuestDaoSqls.*;
+import static kr.or.connect.guestbook.dao.GuestbookDaoSqls.*;
 
 import java.util.Collections;
 import java.util.HashMap;
