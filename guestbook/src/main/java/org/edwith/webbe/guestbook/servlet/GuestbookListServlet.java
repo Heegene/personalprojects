@@ -18,13 +18,9 @@ import javax.servlet.http.HttpServletResponse;
 public class GuestbookListServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-<<<<<<< HEAD
         // 코드를 작성하세요.
     	GuestbookDao dao = new GuestbookDao();
     	// request.setCharacterEncoding("utf-8");
-=======
-    	GuestbookDao dao = new GuestbookDao();
->>>>>>> 6a8e7501abac37ad1a372ba49caabe1142482439
     	List<Guestbook> li = dao.getGuestbooks();
     	
     	request.setAttribute("list", li);

@@ -15,16 +15,16 @@ import org.springframework.transaction.annotation.TransactionManagementConfigure
 public class DBConfig implements TransactionManagementConfigurer {
 	
 	// MySQL로 구현 시 사용
-	// private String driverClassName = "com.mysql.cj.jdbc.Driver"; 
-	// private String url = "jdbc:mysql://localhost:3306/connectdb?useUnicode=true&characterEncoding=utf8"; 
-	// private String username = "connectuser"; 
-	// private String password = "connect123!@#";
+	 private String driverClassName = "com.mysql.jdbc.Driver"; 
+	 private String url = "jdbc:mysql://localhost:3306/connectdb?useUnicode=true&characterEncoding=utf8"; 
+	 private String username = "connectuser"; 
+	 private String password = "connect123!@#";
 	
 	// ORACLE 버전
-	private String driverClassName = "oracle.jdbc.driver.OracleDriver";
-	private String url = "jdbc:oracle:thin:@localhost:1521:xe";
-	private String username = "scott";
-	private String password = "tiger";
+//	private String driverClassName = "oracle.jdbc.driver.OracleDriver";
+//	private String url = "jdbc:oracle:thin:@localhost:1521:xe";
+//	private String username = "scott";
+//	private String password = "tiger";
 	
 	@Bean
 	public DataSource dataSource() {
