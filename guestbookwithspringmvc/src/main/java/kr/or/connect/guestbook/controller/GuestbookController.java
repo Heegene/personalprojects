@@ -4,10 +4,15 @@ import java.util.ArrayList;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.sound.midi.Soundbank;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
@@ -57,6 +62,17 @@ public class GuestbookController {
 		model.addAttribute("pageStartList", pageStartList);
 		
 		return "list";
+		
+	}
+	
+	@PostMapping(path="/write")
+	public String write(@ModelAttribute Guestbook guestbook,
+						 				HttpServletRequest request) {
+		String clientIp = request.getRemoteAddr();
+		System.out.println("Client ip -> " + clientIp);
+		guestbookService.addGuestbook(guestbook, clientIp);
+		
+		return "redirect:list";
 		
 	}
 			
