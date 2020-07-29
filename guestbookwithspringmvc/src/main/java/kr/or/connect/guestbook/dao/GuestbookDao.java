@@ -28,7 +28,7 @@ public class GuestbookDao {
 	
 	public GuestbookDao(DataSource dataSource) {
 		this.jdbc = new NamedParameterJdbcTemplate(dataSource);
-		this.insertAction = new SimpleJdbcInsert(dataSource).withTableName("guestbook").usingGeneratedKeyColumns("id");
+		this.insertAction = new SimpleJdbcInsert(dataSource).withTableName("guestbookmvc").usingGeneratedKeyColumns("id");
 	}
 	
 	public List<Guestbook> selectAll(Integer start, Integer limit) {
