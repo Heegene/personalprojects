@@ -1,11 +1,13 @@
 package kr.or.connect.guestbook.controller;
 
 import org.junit.Before;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.jupiter.api.Nested;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -44,8 +46,6 @@ public class GuestBookApiControllerTest {
 	public GuestbookService guestbookService;
 	// mock annotation을 붙여 선언된 guestbookService는 mockito에 의해 mock object로 생성됨
 	// => 가짜 객체 
-	
-	
 	
 	private MockMvc mockMvc;
 	
@@ -94,10 +94,9 @@ public class GuestBookApiControllerTest {
 		
 	}
 	
-	
 	@Test
 	public void deleteGuestbook() throws Exception {
-		Long id = 14L;
+		Long id = 1L;
 		when(guestbookService.deleteGuestbook(id, "127.0.0.1")).thenReturn(1);
 		// 위의 getguestbook과 마찬가지로 임의로 id=1(long type)을 설정하고 deleteGuestbook 메소드를 실행하고,
 		// 리턴할 값으로 1 지정
