@@ -1,0 +1,23 @@
+CREATE TABLE mvc_board (
+  bno     NUMBER     PRIMARY KEY,
+  writer  VARCHAR2(20) NOT NULL,
+  title   VARCHAR2(100) NOT NULL,
+  content VARCHAR2(2000) NOT NULL,
+  regdate DATE default SYSDATE,
+  hit     INT default 0);
+  
+CREATE SEQUENCE mvc_board_seq;
+
+INSERT INTO mvc_board (bno,
+                       writer, 
+                       title, 
+                       content)
+            VALUES    (mvc_board_seq.NEXTVAL,
+                       'Kim',
+                       '제목1',
+                       '내용 테스트입니다.')
+;
+
+commit; 
+          
+  
