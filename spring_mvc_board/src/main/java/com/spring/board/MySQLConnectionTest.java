@@ -8,9 +8,16 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import org.junit.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+
 
 
 public class MySQLConnectionTest {
+	
+	protected final Logger logger = LoggerFactory.getLogger(this.getClass());
+	
 	static final String DRIVER = "com.mysql.jdbc.Driver";
 	static final String URL = "jdbc:mysql://localhost:3306/connectDB?useSSL=false";
 	static final String USERNAME = "connectuser";
@@ -27,13 +34,19 @@ public class MySQLConnectionTest {
 			conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 			stmt = conn.createStatement();
 			
+			
+			
 			String sql = "SELECT * FROM board";
 			
 			rs = stmt.executeQuery(sql);
 			
 			while (rs.next()) {
+				String subject = rs.getString("subject");
+				logger.info("===========================================================");
+				logger.info("subject: {}" , subject);
 				System.out.println("제목은 " + rs.getString("subject") + "입니다. ");
 			}
+			
 			
 		} catch (Exception e) {
 			e.printStackTrace();
