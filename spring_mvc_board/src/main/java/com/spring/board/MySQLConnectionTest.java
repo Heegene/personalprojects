@@ -12,7 +12,7 @@ import org.junit.*;
 
 public class MySQLConnectionTest {
 	static final String DRIVER = "com.mysql.jdbc.Driver";
-	static final String URL = "jdbc:mysql://localhost:3306/board?useSSL=false";
+	static final String URL = "jdbc:mysql://localhost:3306/connectDB?useSSL=false";
 	static final String USERNAME = "connectuser";
 	static final String PASSWORD = "connect123!@#";
 	
@@ -27,7 +27,7 @@ public class MySQLConnectionTest {
 			conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 			stmt = conn.createStatement();
 			
-			String sql = "SELECT subject, content, writer FROM board";
+			String sql = "SELECT * FROM board";
 			
 			rs = stmt.executeQuery(sql);
 			
