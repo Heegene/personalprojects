@@ -5,7 +5,7 @@
 
 	<select id="getBoardList"
 		parameterType="com.spring.board.form.BoardForm"
-		resultType="com.spring.borad.dto.BoardDto">
+		resultType="com.spring.board.dto.BoardDto">
 		SELECT seq
 		, re_ref
 		, re_lev
