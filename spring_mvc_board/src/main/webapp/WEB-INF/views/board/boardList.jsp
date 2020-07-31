@@ -1,0 +1,89 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>게시판 목록</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		getBoardList();
+	});
+	
+	function getBoardList() {
+		$.ajax({
+			type:"GET",
+			url:"/board/getBoardList",
+			dataType:"JSON",
+			success : function(obj) {
+				getBoardListCallback(obj);
+			},
+			error : function(xhr, status, error) {}
+		});
+	}
+	
+	function getBoardListCallback(obj) {
+		
+		let list = obj;
+		let listLen = obj.length;
+		console.log(list);
+		console.log(listLen);
+		
+		let str = "";
+		
+		if (listLen > 0) {
+			for (let i = 0; i < listLen; i++) {
+				let seq = list[i].seq;
+				let rereq = list[i].re_req;
+				let relev = list[i].re_lev;
+				let reseq= list[i].re_seq;
+				let writer = list[i].writer;
+				let subject = list[i].subject;
+				let content = list[i].content;
+				let hits = list[i].hits;
+				let delyn = list[i].delyn;
+				let insertid = list[i].insertid;
+				let passwd = list[i].passwd;
+				let regdate = list[i].regdate;
+				let updateid = list[i].updateid;
+				let updatedate = list[i].updatedate;
+				
+				
+				str += "<tr>";
+				str += "<td>" + seq + "</td>";
+				str += "<td>" + subject + "</td>";
+				str += "<td>" + hits + "</td>";
+				str += "<td>" + writer + "</td>";
+				str += "</tr>";
+			}
+		} else {
+			
+			str += "<tr colspan='4'>";
+			str += "<td> 등록된 글이 존재하지 않습니다. </td>";
+			str += "<tr>";
+			
+		}
+		
+		$("#tbody").html(str);
+	}
+</script>
+</head>
+<body>
+
+<table border=1 width=350>
+	<thead>
+		<tr>
+			<td> 글번호 </td>
+			<td> 제목 </td>
+			<td> 조회수 </td>
+			<td> 작성자 </td>
+		</tr>
+	</thead>
+	<tbody id="tbody">
+	
+	</tbody>
+
+</table>
+
+</body>
+</html>
