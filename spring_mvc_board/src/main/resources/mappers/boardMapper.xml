@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.board.boardMapper">
+
+	<select id="getBoardList"
+		parameterType="com.spring.board.form.BoardForm"
+		resultType="com.spring.borad.dto.BoardDto">
+		SELECT seq
+		, re_ref
+		, re_lev
+		, re_seq
+		, writer
+		, subject
+		, content
+		, hits
+		, del_yn
+		, insertid
+		, passwd
+		, regdate
+		, updateid
+		, updatedate
+		FROM board
+	</select>
+</mapper>
