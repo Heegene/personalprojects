@@ -21,11 +21,13 @@ public class BoardController {
 	@Autowired
 	private BoardService boardService;
 	
+	// 게시판 목록 페이지 이동
 	@RequestMapping(value = "/boardList")
 	public String getBoardList(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		return "board/boardList";
 	}
 	
+	// 게시판 목록 조회 API 
 	@RequestMapping(value = "/getBoardList")
 	@ResponseBody
 	public List<BoardDto> getBoardList(HttpServletRequest request, HttpServletResponse response, BoardForm boardForm ) throws Exception {
@@ -34,4 +36,62 @@ public class BoardController {
 		
 		return boardList;
 	}
+	// 게시글 조회 페이지 이동 
+	@RequestMapping(value = "/boradDetail")
+	public String boardDetail (HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		return "board/boardDetail";
+	}
+	
+	// 게시글 조회 API
+	@RequestMapping(value = "/getBoardDetail")
+	@ResponseBody
+	public BoardDto getBoardDetail(HttpServletRequest request, HttpServletResponse response, BoardForm boardForm) throws Exception {
+		BoardDto boardDto = boardService.getBoardDetail(boardForm);
+		
+		return boardDto;
+	}
+	
+	// 게시글 등록 페이지 이동
+	@RequestMapping(value = "/boardWrite")
+	public String boardWrite(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		return "board/boardWrite";
+	}
+	
+	// 게시글 등록 API
+	@RequestMapping(value = "/insertBoard")
+	@ResponseBody
+	public BoardDto insertBoard(HttpServletRequest request, HttpServletResponse response, BoardForm boardForm) throws Exception {
+		BoardDto boardDto = boardService.insertBoard(boardForm);
+		
+		return boardDto;
+	}
+	
+	
+	// 게시글 삭제 API
+	@RequestMapping(value = "/deleteBoard")
+	@ResponseBody
+	public BoardDto deleteBoard(HttpServletRequest request, HttpServletResponse response, BoardForm boardForm) throws Exception {
+		
+		BoardDto boardDto = boardService.deleteBoard(boardForm);
+		
+		return boardDto;
+	}
+	
+	// 게시글 수정 페이지 이동
+	@RequestMapping
+	public String boardUpdate (HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		return "board/boardUpdate";
+	}
+	
+	// 게시글 수정 API
+	@RequestMapping(value = "/updateBoard")
+	@ResponseBody
+	public BoardDto updateBoard(HttpServletRequest request, HttpServletResponse response, BoardForm boardForm) throws Exception {
+		BoardDto boardDto = boardService.updateBoard(boardForm);
+		
+		return boardDto;
+	}
+	
 }
