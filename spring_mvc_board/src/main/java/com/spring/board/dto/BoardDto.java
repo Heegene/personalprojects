@@ -19,6 +19,8 @@ public class BoardDto {
 	private String updateid;
 	private Date updatedate;
 	
+	// result 필드 추가 
+	String result;
 	
 	public int getSeq() {
 		return seq;
@@ -103,6 +105,12 @@ public class BoardDto {
 	}
 	public void setUpdatedate(Date updatedate) {
 		this.updatedate = updatedate;
+	}
+	public String getResult() {
+		return result;
+	}
+	public void setResult(String result) {
+		this.result = result;
 	}
 	
 	

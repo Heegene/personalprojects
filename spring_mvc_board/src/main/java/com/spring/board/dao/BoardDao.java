@@ -27,4 +27,26 @@ public class BoardDao {
 	public int updateBoardHits(BoardForm boardForm) throws Exception {
 		return sqlSession.update(NAMESPACE + ".updateBoardHits", boardForm);
 	}
+	
+	// 게시글 조회
+	public BoardDto getBoardDetail (BoardForm boardForm) throws Exception {
+		return sqlSession.selectOne(NAMESPACE + ".getBoardDetail", boardForm);
+	}
+	
+	// 게시글 등록
+	public int insertBoard (BoardForm boardForm) throws Exception {
+		
+		return sqlSession.insert(NAMESPACE + ".insertBoard", boardForm);
+	}
+	
+	// 게시글 삭제
+	public int deleteBoard (BoardForm boardForm) throws Exception {
+		return sqlSession.delete(NAMESPACE + ".deleteBoard", boardForm);
+	}
+	
+	// 게시글 수정
+	public int updateBoard (BoardForm boardForm) throws Exception {
+		return sqlSession.update(NAMESPACE + ".updateBoard", boardForm);
+	}
+	
 }

@@ -28,12 +28,65 @@ public class BoardService {
 		
 		if ("S".equals(searchType)) {
 			int updateCnt = boardDao.updateBoardHits(boardForm);
+			
+			if (updateCnt > 0 ) {
+				boardDto = boardDao.getBoardDetail(boardForm);
+			}
+		} else {
+			boardDto = boardDao.getBoardDetail(boardForm);
 		}
-		
-		
 		
 		return boardDto;
 		
 	}
 	
+	// 게시글 등록
+	
+	public BoardDto insertBoard(BoardForm boardForm) throws Exception {
+		
+		BoardDto boardDto = new BoardDto();
+		int insertCnt = boardDao.insertBoard(boardForm);
+		
+		if (insertCnt > 0) {
+			boardDto.setResult("게시글 등록 성공");
+		} else {
+			boardDto.setResult("게시글 등록 실패");
+		}
+		
+		return boardDto;
+	}
+	
+	
+	// 게시글 삭제 
+	public BoardDto deleteBoard(BoardForm boardForm) throws Exception {
+		
+		BoardDto boardDto = new BoardDto();
+		
+		int deleteCnt = boardDao.deleteBoard(boardForm);
+		
+		if (deleteCnt > 0 ) {
+			boardDto.setResult("게시글 삭제 성공");
+		} else {
+			boardDto.setResult("게시글 삭제 실패");
+		}
+		
+		return boardDto;
+	}
+	
+	
+	// 게시글 수정
+	public BoardDto updateBoard (BoardForm boardForm) throws Exception {
+		
+		BoardDto boardDto = new BoardDto();
+		
+		int updateCnt = boardDao.updateBoard(boardForm);
+		
+		if (updateCnt > 0 ) {
+			boardDto.setResult("게시글 수정 성공");
+		} else {
+			boardDto.setResult("게시글 수정 실패");
+		}
+		
+		return boardDto;
+	}
 }
