@@ -4,12 +4,27 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>게시판 목록</title>
+
+<link rel="stylesheet" type="text/css" href="/css/common/common.css"/>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		getBoardList();
 	});
 	
+	// 게시글 조회 페이지 이동
+	function goBoardDetail(boardSeq) {
+		location.href = "/board/boardDetail?boardSeq=" + boardSeq;
+	}
+	
+	
+	// 게시글 작성 페이지 이동
+	
+	function goBoardWrite() {
+		location.href = "/board/boardWrite";
+	}
+	
+	// 게시판 목록 조회
 	function getBoardList() {
 		$.ajax({
 			type:"GET",
@@ -22,6 +37,7 @@
 		});
 	}
 	
+	// 게시글 목록 콜백함수 
 	function getBoardListCallback(obj) {
 		
 		let list = obj;
@@ -69,8 +85,21 @@
 </script>
 </head>
 <body>
+<div id="wrap">
+<div id="container">
+<div class="inner">
 
-<table border=1 width=350>
+<h2> 게시글 목록 </h2>
+
+<form id="boardForm" name="boardForm">
+
+<table width="100%" class="table01">
+	<colgroup>
+	<col width="10%" />
+	<col width="25%" />
+	<col width="10%" />
+	<col width="15%" />
+	<col width="20%" />
 	<thead>
 		<tr>
 			<td> 글번호 </td>
@@ -82,8 +111,18 @@
 	<tbody id="tbody">
 	
 	</tbody>
-
 </table>
+
+
+</form>
+
+<div class="btn_right mt15">
+	<button type="button" class="btn black mr5" onclick="javascript:goBoardWrite();">글 작성</button>
+</div>
+
+</div>
+</div>
+</div>
 
 </body>
 </html>
