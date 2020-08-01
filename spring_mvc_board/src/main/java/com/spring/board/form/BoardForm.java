@@ -20,6 +20,10 @@ public class BoardForm {
 	private Date updatedate;
 	
 	
+	//searchtype 추가
+	private String search_type;
+	
+	
 	public int getSeq() {
 		return seq;
 	}
@@ -104,6 +108,14 @@ public class BoardForm {
 	public void setUpdatedate(Date updatedate) {
 		this.updatedate = updatedate;
 	}
+	public String getSearch_type() {
+		return search_type;
+	}
+	public void setSearch_type(String search_type) {
+		this.search_type = search_type;
+	}
+	
+	
 	
 	
 	
