@@ -21,4 +21,10 @@ public class BoardDao {
 	public List<BoardDto> getBoardList(BoardForm boardForm) throws Exception {
 		return sqlSession.selectList(NAMESPACE + ".getBoardList");
 	}
+	
+	// 게시글 조회 수 수정(조회수+1)
+	
+	public int updateBoardHits(BoardForm boardForm) throws Exception {
+		return sqlSession.update(NAMESPACE + ".updateBoardHits", boardForm);
+	}
 }

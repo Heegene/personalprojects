@@ -22,4 +22,89 @@
 		, updatedate
 		FROM board
 	</select>
+	
+	<delete id="updateBoardHits" parameterType="com.spring.board.form.BoardForm">
+		UPDATE board
+		   SET hits = hits + 1,
+		       updateid = 'NONMEMBER',
+		       updatedate = NOW()
+		 WHERE seq = #{board_seq}
+	</delete>
+	
+	
+	<select id="getBoardDetail" parameterType="com.spring.board.form.BoardForm">
+		SELECT 
+		,  seq
+		,  re_ref
+		,  re_lev
+		,  re_seq
+		,  writer
+		,  subject
+		,  content
+		,  hits
+		,  del_yn
+		,  insertid
+		,  CAST (DATE_FORMAT (regdate, '%Y"년"%m"월"%d"일"  %H"시" %m"분" %s"초") AS CHAR(40) ) AS regdate
+		,  updateid
+		,  CAST (DATE_FORMAT (updatedate, '%Y"년"%m"월"%d"일"  %H"시" %m"분" %s"초") AS CHAR(40) ) AS updatedate
+	    FROM board
+	    WHERE seq = #{board_seq}
+	</select>
+	
+	<insert id="insertBoard" parameterType="com.spring.board.form.BoardForm">
+	
+	INSERT INTO board
+	
+	(
+	  re_ref
+	, re_lev
+	, seq
+	, writer
+	, subject
+	, content
+	, insertid
+	, passwd
+	, date
+	, updateid
+	, updatedate
+	)
+	
+	VALUES
+	
+	(
+	  0
+	, 0
+	, 0
+	, #{board_writer}
+	, #{board_subject}
+	, #{board_content}
+	, 'NONMEMBER'
+	, NOW()
+	, 'NONMEMBER'
+	, NOW()
+	
+	)
+		
+	</insert>
+	
+	<delete id="deleteBoard" parameterType="com.spring.board.form.BoardForm">
+	
+		DELETE FROM board
+		WHERE seq = #{board_seq}
+		
+	</delete>
+	
+	<update id="updateBoard" parameterType="com.spring.board.form.BoardForm">
+	
+		UPDATE board
+		
+		SET
+		
+		  subject = #{board_subject}
+		, content = #{board_content}
+		, insertid = 'NONMEMBER'
+		, updatedate = NOW()
+		WHERE seq = #{board_seq}
+	</update>
 </mapper>
+
