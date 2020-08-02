@@ -17,6 +17,7 @@
     });
         
     /** 게시판 - 목록 페이지 이동 */
+    // 비밀번호부분 추가할것 
     function goBoardList(){                
         location.href = "/board/boardList";
     }
@@ -67,10 +68,10 @@
             var result = obj.result;
             
             if(result == "SUCCESS"){                
-                alert("게시글 등록을 성공하였습니다.");                
+                alert("게시글 등록에 성공하였습니다.");                
                 goBoardList();                 
             } else {                
-                alert("게시글 등록을 실패하였습니다.");    
+                alert("게시글 등록에 실패하였습니다.");    
                 return;
             }
         }
