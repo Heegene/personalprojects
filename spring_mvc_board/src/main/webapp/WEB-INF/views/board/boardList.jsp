@@ -70,6 +70,7 @@
 				str += "<td onclick='javascript:goBoardDetail("+ seq + ");'style='cursor:Pointer'>" + subject + "</td>";
 				str += "<td>" + hits + "</td>";
 				str += "<td>" + writer + "</td>";
+				str += "<td>" + regdate + "</td>";
 				str += "</tr>";
 			}
 		} else {
@@ -106,6 +107,7 @@
 			<td> 제목 </td>
 			<td> 조회수 </td>
 			<td> 작성자 </td>
+			<td> 작성일 </td>
 		</tr>
 	</thead>
 	<tbody id="tbody">

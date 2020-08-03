@@ -1,5 +1,6 @@
 package com.spring.board.form;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class BoardForm {
@@ -15,7 +16,7 @@ public class BoardForm {
 	private String del_yn;
 	private String insertid;
 	private String passwd;
-	private Date regdate;
+	private Timestamp regdate;
 	private String updateid;
 	private Date updatedate;
 	
@@ -90,10 +91,10 @@ public class BoardForm {
 	public void setPasswd(String passwd) {
 		this.passwd = passwd;
 	}
-	public Date getRegdate() {
+	public Timestamp getRegdate() {
 		return regdate;
 	}
-	public void setRegdate(Date regdate) {
+	public void setRegdate(Timestamp regdate) {
 		this.regdate = regdate;
 	}
 	public String getUpdateid() {
