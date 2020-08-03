@@ -89,7 +89,11 @@
 	<delete id="deleteBoard" parameterType="com.spring.board.form.BoardForm">
 	
 		DELETE FROM board
-		WHERE seq = #{seq}
+		WHERE
+		seq = #{seq} 
+		AND
+		passwd = #{passwd}
+		
 		
 	</delete>
 	

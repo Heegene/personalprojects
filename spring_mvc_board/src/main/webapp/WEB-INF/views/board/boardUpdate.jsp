@@ -65,25 +65,9 @@
 			let updateid = obj.updateid;
 			let updatedate = obj.updatedate;
 			
-			str += "<tr>";
-			str += "<th> 제목 </th>";
-			str += "<td>" + subject + "</td>";
-			str += "<th> 조회수 </th>";
-			str += "<td>" + hits + "</td>";
-			str += "</tr>";
-			
-			str += "<tr>";
-			str += "<th> 작성자 </th>";
-			str += "<td>" + writer + "</td>";
-			str += "<th> 작성일시 </th>";
-			str += "<td>" + regdate + "</td>";
-			str += "</tr>";
-			
-			
-			str += "<tr>";
-			str += "<th> 내용 </th>";
-			str += "<td colspan='3'>" + content + "</td>";
-			str += "</tr>";
+			$("#board_subject").val(subject);
+			$("#board_content").val(content);
+			$("#board_writer").val(writer);
 			
 			
 		} else {
@@ -166,7 +150,7 @@
 					<tbody id="tbody">
 						<tr>
 							<th> 제목 </th>
-							<td> <input id="board_subject" name="board_subject" value="" clas="tbox01"> </td>
+							<td> <input id="board_subject" name="board_subject" value="" class="tbox01"> </td>
 						</tr>
 						
 						<tr>
@@ -182,7 +166,7 @@
 				</table>
 				
 				
-				<input type="hidden" id="board_seq" name="board_seq" value="${seq }" />
+				<input type="hidden" id="seq" name="seq" value="${seq }" />
 				<input type="hidden" id="search_type" name="search_type" value="U" />
 				<!--  조회타입: 상세 S 수정 U -->
 				

@@ -79,7 +79,7 @@ public class BoardController {
 	}
 	
 	// 게시글 수정 페이지 이동
-	@RequestMapping
+	@RequestMapping (value = "/boardUpdate")
 	public String boardUpdate (HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		return "board/boardUpdate";
