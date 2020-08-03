@@ -1,20 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html" l charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 
-    <title>게시글 작성</title>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-
-
+<title>게시글 작성</title>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+      /*   $(document).ready(function() {
 
         });
-
+ */
         // 게시판 목록 페이지로 이동
         function goBoardList() {
             location.href = "/board/boardList";
@@ -41,8 +40,8 @@
             if (yn) {
                 $.ajax({
                     url : "/board/insertBoard",
-                    data : $("#boardForm").serialize();
-                    datatype: "json",
+                    data : $("#boardForm").serialize(),
+                    datatype: "JSON",
                     cache: false,
                     async: true,
                     type : "POST",
@@ -54,6 +53,7 @@
                 });
             }
         
+        }
 
         // 게시글 작성 콜백 함수
         function insertBoardCallback(obj) {
@@ -72,51 +72,62 @@
         }
 
 
-        }
 
-    </script>
+ </script>
 </head>
 
 <body>
 
-    <div id="wrap">
-        <div id="container">
-            <div class="inner">
-                <h2>게시글 작성</h2>
-                <form id="boardForm" name="boardForm">
-                    <table width="100%" class="table02">
-                        <caption><strong><span class="t_red">*</span>표시는 필수 입력 항목입니다.</strong></caption>
-                            <colgroup>
-                                <col width="20%">
-                                <col width="*">
-                            </colgroup>
-                            <tbody id="tbody">
-                                <tr>
-                                    <th>제목 <span class="t_red"> *</span></th>
-                                    <td> <input id="board_subject" name="board_subject" value="" class="tbox01"></td>
-                                </tr>
-                                <tr>
-                                    <th> 작성자 <span class="t_red"> *</span></th>
-                                    <td> <input id="board_writer" name="board_writer" value="" class="tbox01"></td> 
-                                </tr>
-                                <tr>
-                                    <th> 내용 <span class="t_red"> * </span></th>
-                                    <td> <textarea id="board_content" name="board_content" cols="20" rows="10" class="textarea01"></textarea></td>
-                                </tr>
+	<div id="wrap">
+		<div id="container">
+			<div class="inner">
+				<h2>게시글 작성</h2>
+				<form id="boardForm" name="boardForm">
+					<table width="100%" class="table02">
+						<caption>
+							<strong><span class="t_red">*</span>표시는 필수 입력 항목입니다.</strong>
+						</caption>
+						<colgroup>
+							<col width="20%">
+							<col width="*">
+						</colgroup>
+						<tbody id="tbody">
+							<tr>
+								<th>제목 <span class="t_red"> *</span></th>
+								<td><input id="board_subject" name="board_subject" value=""
+									class="tbox01"></td>
+							</tr>
+							<tr>
+								<th>작성자 <span class="t_red"> *</span></th>
+								<td><input id="board_writer" name="board_writer" value=""
+									class="tbox01"></td>
+							</tr>
+							<tr>
+								<th>내용 <span class="t_red"> * </span></th>
+								<td><textarea id="board_content" name="board_content"
+										cols="20" rows="10" class="textarea01"></textarea></td>
+							</tr>
+							<tr>
+								<th> 비밀번호 <span class="t_red"> *</span> </th>
+								<td> <input id="board_passwd" name="board_passwd" value="" type="password" class="tbox01"> </td>
+							</tr>
+							
 
-                            </tbody>
-                    </table>
-                </form>
+						</tbody>
+					</table>
+				</form>
 
-                <div class="btn_right mt15">
-                    <button type="button" class="btn black mr5" onclick="javascript:goBoardList();">목록으로 돌아가기</button>
-                    <button type="button" class="btn black" onclick="javascipr:insertBoard();">등록하기</button>
-                </div>
+				<div class="btn_right mt15">
+					<button type="button" class="btn black mr5"
+						onclick="javascript:goBoardList();">목록으로 돌아가기</button>
+					<button type="button" class="btn black"
+						onclick="javascript:insertBoard();">등록하기</button>
+				</div>
 
 
-            </div>
-        </div>
-    </div>
+			</div>
+		</div>
+	</div>
 
 </body>
 
