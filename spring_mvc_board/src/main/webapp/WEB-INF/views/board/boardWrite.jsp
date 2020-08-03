@@ -21,20 +21,28 @@
 
         // 게시글 작성
         function insertBoard() {
-            let boardSubject = $("#board_subject").val();
-            let boardContent = $("#board_content").val();
+            let boardSubject = $("#subject").val();
+            let boardContent = $("#content").val();
+            let boardPasswd = $("#passwd").val();
 
             if (boardSubject == "") {
                 alert("제목을 입력해 주세요");
-                $("#board_subject").focus();
+                $("#subject").focus();
                 return;
             }
 
             if (boardContent == "") {
                 alert("내용을 입력해 주세요");
-                $("#board_content").focus();
+                $("#content").focus();
                 return;
             }
+            
+            if (boardPasswd == "") {
+                alert("비밀번호를 입력해 주세요");
+                $("#passwd").focus();
+                return;
+            }
+            
 
             let yn = confirm("게시글을 등록하시겠습니까?");
             if (yn) {
@@ -94,22 +102,22 @@
 						<tbody id="tbody">
 							<tr>
 								<th>제목 <span class="t_red"> *</span></th>
-								<td><input id="board_subject" name="board_subject" value=""
+								<td><input id="subject" name="subject" value=""
 									class="tbox01"></td>
 							</tr>
 							<tr>
 								<th>작성자 <span class="t_red"> *</span></th>
-								<td><input id="board_writer" name="board_writer" value=""
+								<td><input id="writer" name="writer" value=""
 									class="tbox01"></td>
 							</tr>
 							<tr>
 								<th>내용 <span class="t_red"> * </span></th>
-								<td><textarea id="board_content" name="board_content"
+								<td><textarea id="content" name="content"
 										cols="20" rows="10" class="textarea01"></textarea></td>
 							</tr>
 							<tr>
-								<th> 비밀번호 <span class="t_red"> *</span> </th>
-								<td> <input id="board_passwd" name="board_passwd" value="" type="password" class="tbox01"> </td>
+								<th>비밀번호 <span class="t_red"> *</span> </th>
+								<td><input id="passwd" name="passwd" type="password" class="tbox01"> </td>
 							</tr>
 							
 

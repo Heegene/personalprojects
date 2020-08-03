@@ -25,8 +25,8 @@
 	
 	// 게시글 수정 페이지 이동
 	function goBoardUpdate() {
-		 var seq = $("#board_seq").val();
-		location.href = "/board/boardUpdate?board_seq="+seq;
+		 var seq = $("#seq").val();
+		location.href = "/board/boardUpdate?seq="+seq;
 	}
 	
 	// 게시글 상세 조회

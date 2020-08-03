@@ -58,13 +58,12 @@
 	(
 	  re_ref
 	, re_lev
-	, seq
 	, writer
 	, subject
 	, content
 	, insertid
 	, passwd
-	, date
+	, regdate
 	, updateid
 	, updatedate
 	)
@@ -74,11 +73,11 @@
 	(
 	  0
 	, 0
-	, 0
-	, #{board_writer}
-	, #{board_subject}
-	, #{board_content}
+	, #{writer}
+	, #{subject}
+	, #{content}
 	, 'NONMEMBER'
+	, #{passwd}
 	, NOW()
 	, 'NONMEMBER'
 	, NOW()
@@ -90,7 +89,7 @@
 	<delete id="deleteBoard" parameterType="com.spring.board.form.BoardForm">
 	
 		DELETE FROM board
-		WHERE seq = #{board_seq}
+		WHERE seq = #{seq}
 		
 	</delete>
 	
@@ -100,8 +99,8 @@
 		
 		SET
 		
-		  subject = #{board_subject}
-		, content = #{board_content}
+		  subject = #{subject}
+		, content = #{content}
 		, insertid = 'NONMEMBER'
 		, updatedate = NOW()
 		WHERE seq = #{seq}
