@@ -16,9 +16,9 @@ public class BoardForm {
 	private String del_yn;
 	private String insertid;
 	private String passwd;
-	private Timestamp regdate;
+	private String regdate;
 	private String updateid;
-	private Date updatedate;
+	private String updatedate;
 	
 	
 	//searchtype 추가
@@ -91,10 +91,10 @@ public class BoardForm {
 	public void setPasswd(String passwd) {
 		this.passwd = passwd;
 	}
-	public Timestamp getRegdate() {
+	public String getRegdate() {
 		return regdate;
 	}
-	public void setRegdate(Timestamp regdate) {
+	public void setRegdate(String regdate) {
 		this.regdate = regdate;
 	}
 	public String getUpdateid() {
@@ -103,10 +103,10 @@ public class BoardForm {
 	public void setUpdateid(String updateid) {
 		this.updateid = updateid;
 	}
-	public Date getUpdatedate() {
+	public String getUpdatedate() {
 		return updatedate;
 	}
-	public void setUpdatedate(Date updatedate) {
+	public void setUpdatedate(String updatedate) {
 		this.updatedate = updatedate;
 	}
 	public String getSearch_type() {
