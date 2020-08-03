@@ -22,8 +22,7 @@
 		location.href="/board/boardList";
 	}
 	
-	// 게시글 상세 조회 
-	
+	// 게시글 상세 조회
 	function getBoardDetail(seq) {
 		var seq = $("#seq").val();
 		
@@ -65,9 +64,9 @@
 			let updateid = obj.updateid;
 			let updatedate = obj.updatedate;
 			
-			$("#board_subject").val(subject);
-			$("#board_content").val(content);
-			$("#board_writer").val(writer);
+			$("#subject").val(subject);
+			$("#content").val(content);
+			$("#writer").val(writer);
 			
 			
 		} else {
@@ -75,22 +74,21 @@
 			return;
 		}
 		
-		$("#tbody").html(str); //이부분 불필요하면 빼기 
 	}
 	
 	// 게시글 수정
 	function updateBoard() {
-		var subject = $("#board_subject").val();
-		var content = $("#board_content").val();
+		var subject = $("#subject").val();
+		var content = $("#content").val();
 		
 		if (subject == "") {
 			alert("제목을 입력해 주세요.");
-			$("#board_subject").focus();
+			$("#subject").focus();
 			return;
 		}
 		if (content == "") {
 			alert("제목을 입력해 주세요.");
-			$("#board_content").focus();
+			$("#content").focus();
 			return;
 		}
 		
@@ -150,17 +148,17 @@
 					<tbody id="tbody">
 						<tr>
 							<th> 제목 </th>
-							<td> <input id="board_subject" name="board_subject" value="" class="tbox01"> </td>
+							<td> <input id="subject" name="subject" value="" class="tbox01"> </td>
 						</tr>
 						
 						<tr>
 							<th> 작성자 </th>
-							<td id="board_writer"> </td>
+							<td id="writer"> </td>
 						</tr>
 						
 						<tr>
 							<th> 내용 <span class="t_red">*</span> </th>
-							<td colspan="5"> <textarea rows="40" cols="10" id="board_content" name="board_content"></textarea>
+							<td colspan="5"> <textarea rows="30" cols="30" id="content" name="content"></textarea>
 						</tr>
 					</tbody>
 				</table>
