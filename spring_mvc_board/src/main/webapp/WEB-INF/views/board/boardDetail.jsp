@@ -10,7 +10,7 @@
 <% String seq = request.getParameter("seq"); %>
 
 <!--  게시글 번호  -->
-<c:set var="seq" value="%=seq"></c:set>
+<c:set var="seq" value="<%=seq %>"></c:set>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
 <script type="text/javascript">
@@ -25,13 +25,13 @@
 	
 	// 게시글 수정 페이지 이동
 	function goBoardUpdate() {
-		seq = $("#board_seq").val();
-		location.href = "/board/boardUpdate?seq="+seq;
+		 var seq = $("#board_seq").val();
+		location.href = "/board/boardUpdate?board_seq="+seq;
 	}
 	
 	// 게시글 상세 조회
 	function getBoardDetail(seq) {
-		let seq = $("#board_seq").val();
+		var seq = $("#seq").val();
 		
 		if (seq != "") {
 			$.ajax({
@@ -48,6 +48,7 @@
 			});
 		} else {
 			alert("오류가 발생하였습니다. \n 관리자에게 문의해 주세요.")
+			
 		}
 	}
 	
@@ -107,7 +108,7 @@
 		if (yn) {
 			$.ajax({
 				url : "/board/deleteBoard",
-				data : $("#boardForm").serialize();,
+				data : $("#boardForm").serialize(),
 				dateType: "JSON",
 				cache: false,
 				async: false,
@@ -160,7 +161,7 @@
 					
 					</table>
 					
-					<input type="hidden" id="seq" name="board_seq" value="${seq}" />
+					<input type="hidden" id="seq" name="seq" value="${seq}" />
 					<input type="hidden" id="search_type" name="search_type" value="S" />
 				
 				</form>

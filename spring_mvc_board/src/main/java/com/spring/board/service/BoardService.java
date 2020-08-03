@@ -48,7 +48,7 @@ public class BoardService {
 		int insertCnt = boardDao.insertBoard(boardForm);
 		
 		if (insertCnt > 0) {
-			boardDto.setResult("게시글 등록 성공");
+			boardDto.setResult("SUCCESS");
 		} else {
 			boardDto.setResult("게시글 등록 실패");
 		}
@@ -65,7 +65,7 @@ public class BoardService {
 		int deleteCnt = boardDao.deleteBoard(boardForm);
 		
 		if (deleteCnt > 0 ) {
-			boardDto.setResult("게시글 삭제 성공");
+			boardDto.setResult("SUCCESS");
 		} else {
 			boardDto.setResult("게시글 삭제 실패");
 		}
@@ -82,7 +82,7 @@ public class BoardService {
 		int updateCnt = boardDao.updateBoard(boardForm);
 		
 		if (updateCnt > 0 ) {
-			boardDto.setResult("게시글 수정 성공");
+			boardDto.setResult("SUCCESS");
 		} else {
 			boardDto.setResult("게시글 수정 실패");
 		}
