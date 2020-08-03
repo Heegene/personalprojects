@@ -37,7 +37,7 @@ public class BoardController {
 		return boardList;
 	}
 	// 게시글 조회 페이지 이동 
-	@RequestMapping(value = "/boradDetail")
+	@RequestMapping(value = "/boardDetail")
 	public String boardDetail (HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		return "board/boardDetail";

@@ -13,8 +13,8 @@
 	});
 	
 	// 게시글 조회 페이지 이동
-	function goBoardDetail(boardSeq) {
-		location.href = "/board/boardDetail?boardSeq=" + boardSeq;
+	function goBoardDetail(seq) {
+		location.href = "/board/boardDetail?seq=" + seq;
 	}
 	
 	
@@ -67,7 +67,7 @@
 				
 				str += "<tr>";
 				str += "<td>" + seq + "</td>";
-				str += "<td>" + subject + "</td>";
+				str += "<td onclick='javascript:goBoardDetail("+ seq + ");'style='cursor:Pointer'>" + subject + "</td>";
 				str += "<td>" + hits + "</td>";
 				str += "<td>" + writer + "</td>";
 				str += "</tr>";
