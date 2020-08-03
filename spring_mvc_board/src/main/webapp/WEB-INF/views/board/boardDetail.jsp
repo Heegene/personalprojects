@@ -169,6 +169,7 @@
 						<button type="button" class="btn black mr5" onclick="javascript:goBoardList();">목록으로 돌아가기</button>
 						<button type="button" class="btn black mr5" onclick="javascript:goBoardUpdate();">글 수정</button>
 						<button type="button" class="btn black mr5" onclick="javascript:deleteBoard();">글 삭제</button>
+						
 					</div>
 					
 			
