@@ -17,10 +17,11 @@
 		, del_yn
 		, insertid
 		, passwd
-		, regdate
+		, DATE_FORMAT(regdate, '%Y-%m-%d') AS regdate
 		, updateid
-		, updatedate
+		, CAST(updatedate AS DATETIME) as updatedate
 		FROM board
+		ORDER BY seq DESC
 	</select>
 	
 	<delete id="updateBoardHits" parameterType="com.spring.board.form.BoardForm">
@@ -28,13 +29,12 @@
 		   SET hits = hits + 1,
 		       updateid = 'NONMEMBER',
 		       updatedate = NOW()
-		 WHERE seq = #{board_seq}
+		 WHERE seq = #{seq}
 	</delete>
 	
 	
-	<select id="getBoardDetail" parameterType="com.spring.board.form.BoardForm">
-		SELECT 
-		,  seq
+	<select id="getBoardDetail" parameterType="com.spring.board.form.BoardForm" resultType="com.spring.board.dto.BoardDto">
+			SELECT seq
 		,  re_ref
 		,  re_lev
 		,  re_seq
@@ -44,11 +44,11 @@
 		,  hits
 		,  del_yn
 		,  insertid
-		,  CAST (DATE_FORMAT (regdate, '%Y"년"%m"월"%d"일"  %H"시" %m"분" %s"초") AS CHAR(40) ) AS regdate
+		,  regdate
 		,  updateid
-		,  CAST (DATE_FORMAT (updatedate, '%Y"년"%m"월"%d"일"  %H"시" %m"분" %s"초") AS CHAR(40) ) AS updatedate
+		,  updatedate
 	    FROM board
-	    WHERE seq = #{board_seq}
+	    WHERE seq = #{seq}
 	</select>
 	
 	<insert id="insertBoard" parameterType="com.spring.board.form.BoardForm">
@@ -104,7 +104,7 @@
 		, content = #{board_content}
 		, insertid = 'NONMEMBER'
 		, updatedate = NOW()
-		WHERE seq = #{board_seq}
+		WHERE seq = #{seq}
 	</update>
 </mapper>
 
