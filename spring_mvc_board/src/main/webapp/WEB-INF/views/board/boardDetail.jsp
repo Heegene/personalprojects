@@ -98,12 +98,82 @@
 		
 		$("#tbody").html(str);
 	}
-
+	
+	
+	// 삭제기능 함수 
+	function deleteBoard() {
+		let seq = $("#board_seq").val();
+		let yn = confirm("게시글을 삭제하시겠습니까?");
+		if (yn) {
+			$.ajax({
+				url : "/board/deleteBoard",
+				data : $("#boardForm").serialize();,
+				dateType: "JSON",
+				cache: false,
+				async: false,
+				type: "POST",
+				success: function(obj) {
+					deleteBoardCallback(obj);
+				},
+				error: function(xhr, status, error) {}
+			});
+		}
+	}
+	
+	
+	// delete function 콜백함수 
+	function deleteBoardCallback(obj) {
+		if (obj != null) {
+			let result = obj.result;
+			
+			if (result == "SUCCESS") {
+				alert("게시글 삭제에 성공하였습니다.");
+				goBoardList();
+			} else {
+				alert("게시글 삭제에 실패하였습니다.")
+				return;
+			}
+			
+		}
+		
+	}
 
 </script>
 
 </head>
 <body>
+
+	<div id="wrap">
+		<div id="container">
+			<div class="inner">
+				<h2> 게시글 상세 </h2>			
+				<form id="boardForm" name="boardForm">
+					<table width="100%" class="table01">
+						<colgroup>
+							<col width="15%">
+							<col width="35%">
+							<col width="15%">
+							<col width="*">
+						</colgroup>					
+						<tbody id="tbody">
+						</tbody>
+					
+					</table>
+					
+					<input type="hidden" id="seq" name="board_seq" value="${seq}" />
+					<input type="hidden" id="search_type" name="search_type" value="S" />
+				
+				</form>
+					<div class="btn_right mt15">
+						<button type="button" class="btn black mr5" onclick="javascript:goBoardList();">목록으로 돌아가기</button>
+						<button type="button" class="btn black mr5" onclick="javascript:goBoardUpdate();">글 수정</button>
+						<button type="button" class="btn black mr5" onclick="javascript:deleteBoard();">글 삭제</button>
+					</div>
+					
+			
+			</div>		
+		</div>
+	</div>
 
 </body>
 </html>
