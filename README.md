@@ -8,4 +8,4 @@ guestbookwithspringmvc -> Spring MVC 레이어드 아키텍쳐를 이용한 방�
 구현 화면은 이곳에서 확인하실 수 있습니다. -> <a href="https://contradicto-lee.tistory.com/entry/200729-Spring-MVC-%EA%B8%B0%EB%B0%98-%EB%B0%A9%EB%AA%85%EB%A1%9D">티스토리</a>
 
 spring_mvc_board -> Spring MVC를 이용한 게시판 페이지입니다. (작업 중) <br> 
-8월 2일까지 기능구현을 완료하고, frontend 작업에 들어갈 예정입니다. (작성 시작일: 07.31)
+기능 구현은 완료되었으나 더 예쁘게 꾸미기 위해 작업중입니다^_^
