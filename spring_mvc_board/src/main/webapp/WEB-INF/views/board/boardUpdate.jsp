@@ -68,8 +68,7 @@
 			
 			$("#subject").val(subject);
 			$("#content").val(content);
-			$("#writer").val(writer);
-			
+			$("#writer").text(writer);
 			
 		} else {
 			alert("등록된 글이 존재하지 않습니다.");
@@ -155,12 +154,12 @@
 						
 						<tr>
 							<th> 작성자 </th>
-							<td id="writer"> </td>
+							<td id="writer"></td>
 						</tr>
 						
 						<tr>
 							<th> 내용 <span class="t_red">*</span> </th>
-							<td colspan="5"> <textarea rows="30" cols="30" id="content" name="content"></textarea>
+							<td colspan="5"> <textarea rows="20" cols="90" id="content" name="content"></textarea>
 						</tr>
 					</tbody>
 				</table>
