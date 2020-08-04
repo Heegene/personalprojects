@@ -4,6 +4,9 @@
 <html>
 
 <head>
+
+<!-- CSS -->
+<link rel="stylesheet" type="text/css" href="/css/common.css">
 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 
 <title>게시글 작성</title>
