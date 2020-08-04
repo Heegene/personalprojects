@@ -8,6 +8,8 @@
 <title>Insert title here</title>
 
 <% String seq = request.getParameter("seq"); %>
+<!-- CSS -->
+<link rel="stylesheet" type="text/css" href="/css/common.css">
 
 <!--  게시글 번호  -->
 <c:set var="seq" value="<%=seq %>"></c:set>
