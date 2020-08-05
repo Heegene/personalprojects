@@ -49,7 +49,6 @@ public class BoardDaoTest {
 	}
 	
 	@Test
-	@Ignore
 	public void testInsertBoard() throws Exception {
 		BoardDto boardDto = new BoardDto();
 		
@@ -73,10 +72,10 @@ public class BoardDaoTest {
 	public void testUpdateBoard() throws Exception {
 		BoardDto boardDto = new BoardDto();
 		
-		boardDto.setBid(1);
+		boardDto.setBid(2);
 		boardDto.setCate_cd("1");
-		boardDto.setTitle("첫 번째 게시물입니다-수정");
-		boardDto.setContent("첫 번째 게시물 내용입니다-수정");
+		boardDto.setTitle("두 번째 게시물입니다-수정");
+		boardDto.setContent("두 번째 게시물 내용입니다-수정");
 		boardDto.setTag("1-1");
 		
 		int result = boardDao.updateBoard(boardDto);
@@ -89,6 +88,7 @@ public class BoardDaoTest {
 	}
 	
 	@Test
+	@Ignore
 	public void testDeleteBoard() throws Exception {
 		int result = boardDao.deleteBoard(1);
 		logger.info("\n delete board result " + result );

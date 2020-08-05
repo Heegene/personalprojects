@@ -22,8 +22,7 @@
 	</beans:bean>
 	
 	 
-	<context:component-scan base-package="com.heegene.*" />
-
+	<context:component-scan base-package="com.heegene.web.*" />
 	
 	
 </beans:beans>

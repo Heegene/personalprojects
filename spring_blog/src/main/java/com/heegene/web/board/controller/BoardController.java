@@ -1,26 +1,49 @@
 package com.heegene.web.board.controller;
 
+
 import javax.inject.Inject;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.heegene.web.board.dto.BoardDto;
 import com.heegene.web.board.service.BoardService;
 
 @Controller
-@RequestMapping(value = "/board")
+@RequestMapping(value="/board")
 public class BoardController {
 	
-	@Autowired
+	@Inject
 	private BoardService boardService;
 	
-	@RequestMapping(value = "/getBoardList", method = RequestMethod.GET)
+	@RequestMapping(value="/getBoardList", method = RequestMethod.GET)
 	public String getBoardList(Model model) throws Exception {
 		model.addAttribute("boardList", boardService.getBoardList());
 		return "board/index";
 	}
 	
+	// 글쓰기 클릭 시 호출할 부분 
+	@RequestMapping(value="/boardForm")
+	public String boardForm() {
+		return "board/boardForm";
+	}
+	
+	// 글을 쓰고 저장할 때 호출할 부분(글 목록으로 돌아가도록)
+	@RequestMapping(value="/saveBoard", method = RequestMethod.POST)
+	public String saveBoard(@ModelAttribute("BoardDto") BoardDto boardDto,RedirectAttributes rttr) throws Exception {
+		return "redirect:/board/getBoardList";
+		// modelattribute "BoardDto"는 boardDto와 redirectattribute 두가지를 인자로 받음
+		// 첫 번째 인자는 화면에서 넘겨주는 값을 boarddto랑 매칭시켜 데이터를 받아옴
+		// 두 번째 인자는 글쓰기 이후 돌아가야 할 페이지를 데이터에 전달하기 위한 인자
+		// redirectattribute를 사용하는 이유 중 하나는 뒤로가기 버튼을 클릭했을 때 다시 저장단계로 돌아가 도배되는것을 방지하기 때문
+	}
+	
+	
+	
+	
 }
+	

@@ -12,7 +12,7 @@
 	   						   http://www.springframework.org/schema/context
 	   						   http://www.springframework.org/schema/context/spring-context-3.0.xsd"
 	   						   >
-<context:component-scan base-package="com.heegene.web.board.dao"></context:component-scan>	   						   
+<context:component-scan base-package="com.heegene.web.board.*"></context:component-scan>	  	   						   
 
 
 <!--  Datasource 객체 설정  -->	
