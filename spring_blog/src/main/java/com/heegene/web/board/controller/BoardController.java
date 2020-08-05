@@ -2,6 +2,7 @@ package com.heegene.web.board.controller;
 
 import javax.inject.Inject;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,7 +14,7 @@ import com.heegene.web.board.service.BoardService;
 @RequestMapping(value = "/board")
 public class BoardController {
 	
-	@Inject
+	@Autowired
 	private BoardService boardService;
 	
 	@RequestMapping(value = "/getBoardList", method = RequestMethod.GET)
