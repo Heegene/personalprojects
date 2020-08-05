@@ -21,8 +21,9 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="com.heegene.web" />
-	
+	 
+	<context:component-scan base-package="com.heegene.*" />
+
 	
 	
 </beans:beans>
