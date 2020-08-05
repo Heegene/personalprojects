@@ -17,6 +17,7 @@
  				reg_dt,
  				edit_dt
  		FROM tbl_board
+ 		ORDER BY bid DESC
  	</select>
  
  	<select id="getBoardContent" resultType="com.heegene.web.board.dto.BoardDto">
