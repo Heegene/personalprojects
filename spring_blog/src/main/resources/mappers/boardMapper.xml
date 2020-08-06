@@ -3,22 +3,25 @@
 <!DOCTYPE mapper
  PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
- 
- <mapper namespace="com.heegene.web.board.boardMapper">
- 	<select id="getBoardList" resultType="com.heegene.web.board.dto.BoardDto">
- 		SELECT
- 				bid,
- 				cate_cd,
- 				title,
- 				content,
- 				tag,
- 				view_cnt,
- 				reg_id,
- 				reg_dt,
- 				edit_dt
- 		FROM tbl_board
- 		ORDER BY bid DESC
- 	</select>
+
+<mapper namespace="com.heegene.web.board.boardMapper">
+	<select id="getBoardList"
+		resultType="com.heegene.web.board.dto.BoardDto">
+		<![CDATA[
+		SELECT bid, cate_cd, title, content, tag, view_cnt, reg_id, reg_dt, edit_et
+		FROM 
+				(
+				SELECT rownum AS rownum, bid, cate_cd, title, content, tag, view_cnt,reg_id, reg_dt, edit_et
+				FROM
+						(SELECT * FROM tbl_board
+						 ORDER BY bid DESC)
+			    WHERE rownum >= #{startList})
+			    
+		WHERE rownum <= #{listSize}
+		]]>
+	</select>
+ 	
+ 	
  
  	<select id="getBoardContent" resultType="com.heegene.web.board.dto.BoardDto">
  		SELECT
@@ -81,5 +84,10 @@
 				view_cnt = view_cnt + 1
 		WHERE   bid = #{bid}
 	</update>
-	 		
+	
+	
+	<select id="getBoardListCnt">
+		SELECT count(*) AS listCnt
+		FROM tbl_board
+	</select> 		
  </mapper>
