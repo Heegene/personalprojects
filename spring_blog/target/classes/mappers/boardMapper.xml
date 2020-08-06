@@ -50,7 +50,7 @@
 			 		
 			 		VALUES
 			 		(
-			 		   #{cate_cd}
+			 		   '해당없음'
 			 		 , #{title}
 			 		 , #{content}
 			 		 , #{tag}

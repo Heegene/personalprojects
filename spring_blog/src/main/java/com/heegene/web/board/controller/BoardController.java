@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.heegene.web.board.dto.BoardDto;
@@ -35,6 +36,7 @@ public class BoardController {
 	// 글을 쓰고 저장할 때 호출할 부분(글 목록으로 돌아가도록)
 	@RequestMapping(value="/saveBoard", method = RequestMethod.POST)
 	public String saveBoard(@ModelAttribute("BoardDto") BoardDto boardDto,RedirectAttributes rttr) throws Exception {
+		boardService.insertBoard(boardDto);
 		return "redirect:/board/getBoardList";
 		// modelattribute "BoardDto"는 boardDto와 redirectattribute 두가지를 인자로 받음
 		// 첫 번째 인자는 화면에서 넘겨주는 값을 boarddto랑 매칭시켜 데이터를 받아옴
@@ -42,6 +44,11 @@ public class BoardController {
 		// redirectattribute를 사용하는 이유 중 하나는 뒤로가기 버튼을 클릭했을 때 다시 저장단계로 돌아가 도배되는것을 방지하기 때문
 	}
 	
+	@RequestMapping(value = "/getBoardContent", method=RequestMethod.GET)
+	public String getBoardContent(Model model, @RequestParam("bid") int bid) throws Exception {
+		model.addAttribute("boardContent", boardService.getBoardContent(bid));
+		return "board/boardContent";
+	}
 	
 	
 	
