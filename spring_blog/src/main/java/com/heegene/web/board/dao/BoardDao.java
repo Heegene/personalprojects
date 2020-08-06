@@ -2,10 +2,11 @@ package com.heegene.web.board.dao;
 
 import java.util.List;
 
+import com.heegene.common.Pagination;
 import com.heegene.web.board.dto.BoardDto;
 
 public interface BoardDao {
-	public List<BoardDto> getBoardList() throws Exception;
+	public List<BoardDto> getBoardList(Pagination pagination) throws Exception;
 	
 	public BoardDto getBoardContent(int bid) throws Exception;
 	
@@ -17,5 +18,6 @@ public interface BoardDao {
 	
 	public int updateViewCnt(int bid) throws Exception;
 	
+	public int getBoardListCnt() throws Exception;
 	
 }
