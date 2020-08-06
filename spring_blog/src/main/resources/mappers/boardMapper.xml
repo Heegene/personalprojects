@@ -86,7 +86,7 @@
 	</update>
 	
 	
-	<select id="getBoardListCnt">
+	<select id="getBoardListCnt" resultType="int">
 		SELECT count(*) AS listCnt
 		FROM tbl_board
 	</select> 		

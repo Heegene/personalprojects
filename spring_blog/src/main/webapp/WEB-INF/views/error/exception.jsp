@@ -14,7 +14,7 @@
 		<div class="container">
 			<p> 데이터 처리 과정에서 문제가 발생하였습니다. </p>
 			<p> 관리자에게 문의하여 주십시오. </p>
-			<h3>${exception.getMessage()}</h3>
+			<h6>${exception.getMessage()}</h6>
 			<ul>
 				<c:forEach items="${exception.getStackTrace()}" var="stack">
 					<li>${stack.toString()}</li>

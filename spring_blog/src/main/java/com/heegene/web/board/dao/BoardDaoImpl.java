@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.heegene.common.Pagination;
 import com.heegene.web.board.dto.BoardDto;
 
 @Repository
@@ -20,7 +21,7 @@ public class BoardDaoImpl implements BoardDao {
 	
 	// 목록 불러오기
 	@Override
-	public List<BoardDto> getBoardList() throws Exception {
+	public List<BoardDto> getBoardList(Pagination pagination) throws Exception {
 		return sqlSession.selectList("com.heegene.web.board.boardMapper.getBoardList");
 	}
 	
@@ -52,5 +53,11 @@ public class BoardDaoImpl implements BoardDao {
 	@Override
 	public int updateViewCnt(int bid) throws Exception {
 		return sqlSession.update("com.heegene.web.board.boardMapper.updateViewCnt", bid);
+	}
+	
+	// 게시글 수 확인
+	@Override
+	public int getBoardListCnt() throws Exception {
+		return sqlSession.selectOne("com.heegene.web.board.boardMapper.getBoardListCnt");
 	}
 }
