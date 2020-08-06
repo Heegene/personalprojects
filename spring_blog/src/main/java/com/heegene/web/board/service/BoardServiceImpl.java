@@ -10,8 +10,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.heegene.web.board.dao.BoardDao;
 import com.heegene.web.board.dto.BoardDto;
 
-@Transactional
 @Service
+@Transactional
 public class BoardServiceImpl implements BoardService {
 	
 	@Inject
