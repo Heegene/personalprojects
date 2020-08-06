@@ -29,14 +29,19 @@ public class BoardController {
 	
 	// 글쓰기 클릭 시 호출할 부분 
 	@RequestMapping(value="/boardForm")
-	public String boardForm() {
+	public String boardForm(@ModelAttribute("boardDto") BoardDto boardDto) {
 		return "board/boardForm";
 	}
 	
 	// 글을 쓰고 저장할 때 호출할 부분(글 목록으로 돌아가도록)
 	@RequestMapping(value="/saveBoard", method = RequestMethod.POST)
-	public String saveBoard(@ModelAttribute("BoardDto") BoardDto boardDto,RedirectAttributes rttr) throws Exception {
-		boardService.insertBoard(boardDto);
+	public String saveBoard(@ModelAttribute("boardDto") BoardDto boardDto,@RequestParam("mode") String mode, RedirectAttributes rttr) throws Exception {
+		if (mode.equals("edit")) {
+			boardService.updateBoard(boardDto);
+		} else {
+			boardService.insertBoard(boardDto);
+		}
+		
 		return "redirect:/board/getBoardList";
 		// modelattribute "BoardDto"는 boardDto와 redirectattribute 두가지를 인자로 받음
 		// 첫 번째 인자는 화면에서 넘겨주는 값을 boarddto랑 매칭시켜 데이터를 받아옴
@@ -50,7 +55,22 @@ public class BoardController {
 		return "board/boardContent";
 	}
 	
+	@RequestMapping(value = "/editForm", method=RequestMethod.GET)
+	public String editForm(@RequestParam("bid") int bid,
+						   @RequestParam("mode") String mode,
+						   Model model) throws Exception {
+		model.addAttribute("boardContent", boardService.getBoardContent(bid));
+		model.addAttribute("mode", mode);
+		model.addAttribute("boardDto", new BoardDto());
+		// boardDto 추가한 건 입력폼과의 연동을 위해서 
+		return "board/boardForm";
+	}
 	
+	@RequestMapping(value = "/deleteBoard", method=RequestMethod.GET)
+	public String deleteBoard(RedirectAttributes rttr, @RequestParam("bid") int bid) throws Exception {
+		boardService.deleteBoard(bid);
+		return "redirect:/board/getBoardList";
+	}
 	
 }
 	

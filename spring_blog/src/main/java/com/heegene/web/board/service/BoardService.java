@@ -16,4 +16,10 @@ public interface BoardService {
 	// 글 조회
 	public BoardDto getBoardContent(int bid) throws Exception;
 	
+	// 글 수정
+	public void updateBoard(BoardDto boardDto) throws Exception;
+	
+	// 글 삭제
+	public void deleteBoard(int bid) throws Exception;
+	
 }

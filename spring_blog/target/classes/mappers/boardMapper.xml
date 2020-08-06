@@ -63,8 +63,7 @@
  	
  	<update id="updateBoard" parameterType="com.heegene.web.board.dto.BoardDto">
  		UPDATE tbl_board SET
- 					  cate_cd = #{cate_cd}
- 					, title = #{title}
+  					  title = #{title}
  					, content = #{content}
  					, tag = #{tag}
  					, edit_dt = sysdate

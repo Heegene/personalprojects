@@ -1,8 +1,6 @@
 package com.heegene.web.board.service;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -36,7 +34,7 @@ public class BoardServiceImpl implements BoardService {
 			System.out.println("게시글 입력 실패 ");
 		}
 	}
-	
+	// 게시글 조회
 	@Override
 	public BoardDto getBoardContent(int bid) throws Exception {
 		// 조회수 +1을 먼저 수행 후 get content 를 수행
@@ -44,5 +42,16 @@ public class BoardServiceImpl implements BoardService {
 		return boardDao.getBoardContent(bid);
 	}
 	
+	// 글 수정
+	@Override
+	public void updateBoard(BoardDto boardDto) throws Exception {
+		boardDao.updateBoard(boardDto);
+	}
 	
+	// 글 삭제
+	@Override
+	public void deleteBoard(int bid) throws Exception {
+		boardDao.deleteBoard(bid);
+		
+	}
 }
