@@ -5,31 +5,32 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- order by 부분 임시로 빼놨음 나중에 bid desc 해야함  -->
 <mapper namespace="com.heegene.web.board.boardMapper">
-	<select id="getBoardList"
-		resultType="com.heegene.web.board.dto.BoardDto" flushCache="true">
+	<select id="getBoardList" 
+		resultType="com.heegene.web.board.dto.BoardDto" >
 		<![CDATA[
 			SELECT *
-			FROM (
-			SELECT ORG.*, ROWNUM AS "RNUM" FROM
-			(
-			SELECT * FROM tbl_board ORDER BY BID DESC
-			) "ORG"
-			) A
+			FROM (SELECT ORG.*, ROWNUM AS "RNUM" FROM
+							(SELECT * FROM tbl_board ORDER BY BID DESC) "ORG") "A"
 			WHERE A.RNUM >= #{startList, jdbcType=INTEGER} AND rownum <= #{listSize, jdbcType=INTEGER}
-				<if test="searchType=='title' AND keyword != null and keyword != " ">
-					AND title LIKE CONCAT('%', #{keyword, jdbcType=VARCHAR}, '%')
-				</if>
-				
-				<if test="searchType=='content' AND keyword != null and keyword != " ">
-					AND content LIKE CONCAT('%', #{keyword, jdbcType=VARCHAR}, '%')
-				</if> 
-				
-				<if test="searchType=='reg_id' AND keyword != null and keyword != " ">
-					AND reg_id LIKE CONCAT('%', #{keyword, jdbcType=VARCHAR}, '%')
-				</if> 
 			]]>
+			<include refid="search"></include>
 	</select>
  	
+ 	<sql id="search">
+ 
+ 		<if test="searchType=='title' and keyword != null">
+ 			AND TITLE LIKE '%'||#{keyword}||'%'
+ 		</if>
+ 		<if test="searchType=='content' and keyword != null">
+ 			AND content LIKE '%'||#{keyword}||'%'
+ 		</if>
+ 		<if test="searchType=='reg_id' and keyword != null">
+ 			AND reg_id LIKE '%'||#{keyword}||'%'
+ 		</if>
+ 	
+ 	</sql>
+ 
+ 
  
  	<select id="getBoardContent" resultType="com.heegene.web.board.dto.BoardDto">
  		SELECT
@@ -97,21 +98,6 @@
 	<select id="getBoardListCnt" resultType="int">
 		SELECT count(*) AS listCnt
 		FROM tbl_board
-		<trim prefix="WHERE" prefixOverrides="AND||OR">
-			<if test="keyword != null and keyword !=' '">
-				<if test="searchType=='title'">
-				AND TITLE like CONCAT('%', #{keyword, jdbcType=VARCHAR, jdbcTypeForNull=null}, '%')
-				</if>
-				
-				<if test="searchType=='content'">
-				AND CONTENT like CONCAT('%', #{keyword, jdbcType=VARCHAR, jdbcTypeForNull=null}, '%')
-				</if>
-				
-				<if test="searchType=='reg_id'">
-				AND reg_id like CONCAT('%', #{keyword, jdbcType=VARCHAR, jdbcTypeForNull=null}, '%') 
-				</if>
-			</if>
-		</trim>
 		
 	</select> 		
  </mapper>
