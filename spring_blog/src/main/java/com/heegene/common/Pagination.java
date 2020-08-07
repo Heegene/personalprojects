@@ -12,9 +12,8 @@ public class Pagination {
 	private int endPage;
 	private boolean prev;
 	private boolean next;
-	
-	
-	
+		
+
 	public int getListSize() {
 		return listSize;
 	}
@@ -90,7 +89,7 @@ public class Pagination {
 		this.listCnt = listCnt;
 		
 		// 전체 페이지 수
-		this.pageCnt = (int) Math.ceil(listCnt/listSize); // 게시글이 11개여도 2페이지가 나와야 하므로 ceil
+		this.pageCnt = (int)Math.ceil((double)listCnt/listSize); // 게시글이 11개여도 2페이지가 나와야 하므로 ceil
 		
 		// 시작 페이지
 		this.startPage = (range - 1)* rangeSize + 1; // (페이지 범위 -1) * 10   + 1  == 1이면 1 2면 2..

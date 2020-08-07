@@ -53,7 +53,7 @@ public class BoardDaoTest {
 		boardDto.setTag("1");
 		boardDto.setReg_id("abcd");
 		
-		for (int i = 78; i < 1234; i++) {
+		for (int i = 71; i < 1234; i++) {
 			boardDto.setTitle(i + "번째 게시물입니다. ");
 			boardDto.setContent(i + "번째 게시물입니다. ");
 			int result = boardDao.insertBoard(boardDto);
