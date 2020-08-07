@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.heegene.common.Pagination;
+import com.heegene.common.Search;
 import com.heegene.web.board.dto.BoardDto;
 import com.heegene.web.board.service.BoardService;
 
@@ -25,17 +26,27 @@ public class BoardController {
 	@RequestMapping(value="/getBoardList", method = RequestMethod.GET)
 	public String getBoardList(Model model,
 							   @RequestParam(required=false, defaultValue = "1") int page,
-							   @RequestParam(required=false, defaultValue = "1") int range
+							   @RequestParam(required=false, defaultValue = "1") int range,
+							   @RequestParam(required=false, defaultValue = "title") String searchType,
+							   @RequestParam(required=false) String keyword,
+							   @ModelAttribute("search") Search search
 											) throws Exception {
+		
+		model.addAttribute("search", search);
+		search.setSearchType(searchType);
+		search.setKeyword(keyword);
+		
 		// 전체 게시글 수
-		int listCnt = boardService.getBoardListCnt();
+		int listCnt = boardService.getBoardListCnt(search);
+		
+		search.pageInfo(page, range, listCnt);
 		
 		// pagination 객체 생성
 		Pagination pagination = new Pagination();
 		pagination.pageInfo(page, range, listCnt);
 		
-		model.addAttribute("pagination", pagination);
-		model.addAttribute("boardList", boardService.getBoardList(pagination));
+		model.addAttribute("pagination", search);
+		model.addAttribute("boardList", boardService.getBoardList(search));
 		return "board/index";
 	}
 	

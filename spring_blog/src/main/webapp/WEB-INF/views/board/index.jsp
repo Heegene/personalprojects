@@ -4,12 +4,14 @@
 <%@ include file="/WEB-INF/views/layout/header.jsp"%>
 <link rel="shortcut icon" href="#">
 
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Spring Blog</title>
 
+<c:url var="getBoardListURL" value="/board/getBoardList" />
 
 <script type="text/javascript">
 	$(document).on('click', '#btnWriteForm', function(e) {
@@ -18,6 +20,15 @@
 	});
 	// $는 jquery를 시작하는 명령어 - $(DOM요소) 이렇게 해서 각 요소에 접근
 	// e.preventDefault는 버튼 고유의 기능을 막는 명령어()
+	
+	$(document).on('click', '#btnSearch', function(e){
+		e.preventDefault();
+		var url = "${getBoardListURL}";
+		url = url + "?searchType=" + $('#searchType').val();
+		url = url + "?keyword=" + $('#keyword').val();
+		location.href = url;
+		console.log(url);
+	});
 	
 	function fn_contentView(bid) {
 		// bid를 인자로 받아서 해당 bid를 가진 글번호 조회로 이동 
@@ -56,7 +67,6 @@
 		
 		location.href = url;
 	}
-	
 	
 </script>
 </head>
@@ -121,7 +131,7 @@
 	
 
 
-<!-- 페이지 출력부 -->
+<!-- 페이징 -->
 
 <div id="paginationBox">
 		<ul class="pagination">
@@ -146,7 +156,25 @@
 		</ul>
 	</div>
 	
-	<!--  페이징부 종료  -->
+<!--  페이징부 종료  -->
+	
+<!--  검색 -->
+
+	<div class="form-group row justify-content-center">
+		<div class="w100" style="pdding-right:10px">
+			<select class="form-control form-control-sm" name="searchType" id="searchType">
+				<option value="title"> 제목 </option>
+				<option value="Content"> 본문 </option>
+				<option value="reg_id"> 내용 </option>
+			</select> 
+		</div> &nbsp;&nbsp;
+		
+		<div class="w300" style="padding-right:10px">
+			<input type="text" class="form-control form-control-sm" name="keyword" id="keyword">
+		</div>
+	<button class="btn btn-sm btn-primary" name="btnSearch" id="btnSearch">검색</button>
+	</div>
+	
 
 	</div>
 	</article>

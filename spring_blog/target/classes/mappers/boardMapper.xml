@@ -16,6 +16,17 @@
 			) "ORG"
 			) A
 			WHERE A.RNUM >= #{startList, jdbcType=INTEGER} AND rownum <= #{listSize, jdbcType=INTEGER}
+				<if test="searchType=='title' AND keyword != null and keyword != " ">
+					AND title LIKE CONCAT('%', #{keyword, jdbcType=VARCHAR}, '%')
+				</if>
+				
+				<if test="searchType=='content' AND keyword != null and keyword != " ">
+					AND content LIKE CONCAT('%', #{keyword, jdbcType=VARCHAR}, '%')
+				</if> 
+				
+				<if test="searchType=='reg_id' AND keyword != null and keyword != " ">
+					AND reg_id LIKE CONCAT('%', #{keyword, jdbcType=VARCHAR}, '%')
+				</if> 
 			]]>
 	</select>
  	
@@ -86,5 +97,21 @@
 	<select id="getBoardListCnt" resultType="int">
 		SELECT count(*) AS listCnt
 		FROM tbl_board
+		<trim prefix="WHERE" prefixOverrides="AND||OR">
+			<if test="keyword != null and keyword !=' '">
+				<if test="searchType=='title'">
+				AND TITLE like CONCAT('%', #{keyword, jdbcType=VARCHAR, jdbcTypeForNull=null}, '%')
+				</if>
+				
+				<if test="searchType=='content'">
+				AND CONTENT like CONCAT('%', #{keyword, jdbcType=VARCHAR, jdbcTypeForNull=null}, '%')
+				</if>
+				
+				<if test="searchType=='reg_id'">
+				AND reg_id like CONCAT('%', #{keyword, jdbcType=VARCHAR, jdbcTypeForNull=null}, '%') 
+				</if>
+			</if>
+		</trim>
+		
 	</select> 		
  </mapper>

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.heegene.common.Pagination;
+import com.heegene.common.Search;
 import com.heegene.web.board.dao.BoardDao;
 import com.heegene.web.board.dto.BoardDto;
 
@@ -21,8 +22,8 @@ public class BoardServiceImpl implements BoardService {
 	
 	// 목록 조회
 	@Override
-	public List<BoardDto> getBoardList(Pagination pagination) throws Exception {
-		return boardDao.getBoardList(pagination);
+	public List<BoardDto> getBoardList(Search search) throws Exception {
+		return boardDao.getBoardList(search);
 	}
 	
 	// 글쓰기
@@ -59,7 +60,7 @@ public class BoardServiceImpl implements BoardService {
 	
 	// 글 수 확인
 	@Override
-	public int getBoardListCnt() throws Exception {
-		return boardDao.getBoardListCnt();
+	public int getBoardListCnt(Search search) throws Exception {
+		return boardDao.getBoardListCnt(search);
 	}
 }
