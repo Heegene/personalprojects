@@ -98,16 +98,17 @@
 									<td><c:out value="${list.bid}" /></td>
 									<!-- 제목 클릭 시 글 조회 function 호출  -->
 									<td>
-									<a href="#"
-									   onClick="fn_contentView(<c:out value="${list.bid}"/>)"> 
-									   <c:out value="${list.title}"/>
-										</a></td>
+									<a href="#" onClick="fn_contentView(<c:out value="${list.bid}"/>)">  
+									   <c:out value="${list.title}"/> </a>
+							
+									</td>
 									<td><c:out value="${list.reg_id}" /></td>
 									<td><c:out value="${list.view_cnt}" /></td>
 									<td><c:out value="${list.reg_dt}" /></td>
 								</tr>
 							</c:forEach>
 						</c:when>
+					
 
 					</c:choose>
 				</tbody>
@@ -118,37 +119,37 @@
 		<div>
 			<button type="button" class="btn btn-secondary my-2" id="btnWriteForm">글작성</button>
 		</div>
+	
 
 
+<!-- 페이지 출력부 -->
 
-		<!--  페이지 출력부 -->
-
-		<div id="paginationBox">
-			<ul class="pagination">
-				<c:if test="${pagination.prev}">
-					<li class="page-item"><a class="page-link" href="#"
-						onClick="fn_prev('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}')">previous</a>
-				</c:if>
-
-				<c:forEach begin="${pagination.startPage}"
-					end="${pagination.endPage}" var="idx">
-					<li class="page-item <c:out value="${pagination.page == idx? 'active': "}" /> ">
-										 <a class="page-link" href="#"
-						onclick="fn_pagination('${idx}', '${pagination.range}',
-										'${pagination.rangeSize}')">${idx}</a>
+<div id="paginationBox">
+		<ul class="pagination">
+			<c:if test="${pagination.prev}">
+				<li class="page-item"><a class="page-link" href="#"
+					onClick="fn_prev('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}')">previous</a>
 					</li>
-				</c:forEach>
-				<c:if test="${pagination.next}">
-					<li class="page-item"><a class="page-link" href="#"
-						onclick="fn_next('${pagination.range}', '${pagination.range}', '${pagination.rangeSize}')">
-							Next </a>
-				</c:if>
+			</c:if>
+
+			<c:forEach begin="${pagination.startPage}"
+				end="${pagination.endPage}" var="idx">
+				<li class="page-item">
+				<a class="page-link" href="#"onClick="fn_pagination('${idx}', '${pagination.range}','${pagination.rangeSize}')">${idx}</a>
+				</li>
+			</c:forEach>
+			<c:if test="${pagination.next}">
+				<li class="page-item"><a class="page-link" href="#"
+					onClick="fn_next('${pagination.range}', '${pagination.range}', '${pagination.rangeSize}')">
+						Next </a> </li>
+			</c:if>
 
 
-			</ul>
-		</div>
-		
-		<!--  페이징부 종료  -->
+		</ul>
+	</div>
+	
+	<!--  페이징부 종료  -->
+
 	</div>
 	</article>
 </body>

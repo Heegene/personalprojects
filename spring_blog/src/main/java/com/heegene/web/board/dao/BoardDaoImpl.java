@@ -22,7 +22,7 @@ public class BoardDaoImpl implements BoardDao {
 	// 목록 불러오기
 	@Override
 	public List<BoardDto> getBoardList(Pagination pagination) throws Exception {
-		return sqlSession.selectList("com.heegene.web.board.boardMapper.getBoardList");
+		return sqlSession.selectList("com.heegene.web.board.boardMapper.getBoardList", pagination);
 	}
 	
 	// 내용 조회

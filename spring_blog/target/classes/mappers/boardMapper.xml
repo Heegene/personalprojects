@@ -6,21 +6,16 @@
 
 <mapper namespace="com.heegene.web.board.boardMapper">
 	<select id="getBoardList"
-		resultType="com.heegene.web.board.dto.BoardDto">
+		resultType="com.heegene.web.board.dto.BoardDto" flushCache="true">
 		<![CDATA[
-		SELECT bid, cate_cd, title, content, tag, view_cnt, reg_id, reg_dt, edit_et
-		FROM 
-				(
-				SELECT rownum AS rownum, bid, cate_cd, title, content, tag, view_cnt,reg_id, reg_dt, edit_et
-				FROM
-						(SELECT * FROM tbl_board
-						 ORDER BY bid DESC)
-			    WHERE rownum >= #{startList})
-			    
-		WHERE rownum <= #{listSize}
+		SELECT * 
+      	FROM (
+     	 SELECT ORG.*, ROWNUM "RNUM" FROM 
+    	  (SELECT * FROM tbl_board ORDER BY bid DESC ) "ORG" 
+    	  ) A
+     	WHERE A.RNUM >= #{startList, jdbcType=INTEGER} AND A.RNUM <= #{listSize, jdbcType=INTEGER}
 		]]>
 	</select>
- 	
  	
  
  	<select id="getBoardContent" resultType="com.heegene.web.board.dto.BoardDto">
