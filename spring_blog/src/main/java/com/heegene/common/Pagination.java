@@ -107,7 +107,7 @@ public class Pagination {
 		// 1페이지 이후라면 활성화되어 있는 상태임
 		
 		// 다음 버튼 상태
-		this.next = endPage > pageCnt ? false : true; // 현재 페이지보다 남아있는 페이지가 클 경우 활성화
+		this.next = pageCnt > endPage ? true : false; // 현재 페이지보다 남아있는 페이지가 클 경우 활성화
 		
 		// 페이지가 123개만 필요한데 130페이지가 생성되지 않도록 마지막 번호가 총 개수보다 크면
 		// 마지막 번호로 세팅되도록 함 
