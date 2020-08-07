@@ -3,18 +3,20 @@
 <!DOCTYPE mapper
  PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
+<!-- order by 부분 임시로 빼놨음 나중에 bid desc 해야함  -->
 <mapper namespace="com.heegene.web.board.boardMapper">
 	<select id="getBoardList"
 		resultType="com.heegene.web.board.dto.BoardDto" flushCache="true">
 		<![CDATA[
-		SELECT * 
-      	FROM (
-     	 SELECT ORG.*, ROWNUM "RNUM" FROM 
-    	  (SELECT * FROM tbl_board ORDER BY bid DESC ) "ORG" 
-    	  ) A
-     	WHERE A.RNUM >= #{startList, jdbcType=INTEGER} AND A.RNUM <= #{listSize, jdbcType=INTEGER}
-		]]>
+			SELECT *
+			FROM (
+			SELECT ORG.*, ROWNUM AS "RNUM" FROM
+			(
+			SELECT * FROM tbl_board ORDER BY BID DESC
+			) "ORG"
+			) A
+			WHERE A.RNUM >= #{startList, jdbcType=INTEGER} AND rownum <= #{listSize, jdbcType=INTEGER}
+			]]>
 	</select>
  	
  
