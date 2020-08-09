@@ -16,6 +16,6 @@ public class Search extends Pagination {
 		this.keyword = keyword;
 	}
 	
-	
+	// keyword와 searchType을 boardMapper에서 사용
 	
 }
