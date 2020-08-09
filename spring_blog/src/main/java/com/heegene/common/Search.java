@@ -17,5 +17,6 @@ public class Search extends Pagination {
 	}
 	
 	// keyword와 searchType을 boardMapper에서 사용
+	// boardmapper에서는 dynamic query로 조건에 따른 검색을 적용하여 반환
 	
 }
