@@ -43,15 +43,15 @@
 		});
 		
 		// 댓글 저장버튼 클릭
-		$(document).on('click', '#btnReplySave', function() {
+		$(document).on('click', '#btnReplySave', function(){
 			var replyContent = $('#content').val();
 			var replyReg_id = $('#reg_id').val();
 			
-			var paramData = JSON.stringify({"content":replyContent, 
-											"reg_id":replyReg_id, 
+			var paramData = JSON.stringify({"content": replyContent, 
+											"reg_id": replyReg_id, 
 											"bid": '${boardContent.bid}'
 											});
-			var headers = { "Content-Type" : "application/json"
+			var headers = {"Content-Type" : "application/json"
 						   ,"X-HTTP-Method-Override" : "POST"};
 			
 			$.ajax({
@@ -60,12 +60,11 @@
 					 , data : paramData
 					 , type : 'POST'
 					 , dataType : 'text'
-					 , contentType: 'application/json'
 					 , success : function(result) {
 						 showReplyList();
 						 
-						 $('#content').val();
-						 $('#reg_id').val();
+						 $('#content').val('');
+						 $('#reg_id').val('');
 						 
 					 }
 					 , error : function(error) {
@@ -87,7 +86,7 @@
 				success: function(result) { // result = 결과값
 					var htmls = ""; // 서비스 성공 시 처리할 내용 (결과값이 있으면 반복문으로 댓글 수만큼 댓글 리스트 작성)
 					if(result.length < 1) {
-						htmls.push("등록된 댓글이 없습니다.");
+						htmls += '<div> <p> 등록된 댓글이 없습니다. </p> </div>'
 					} else {
 						$(result).each(function() {
 							htmls += '<div class="media text-muted pt-3" id="rid'+ this.rid + '">';
@@ -100,11 +99,12 @@
 							htmls += '<span class="d-block">';
 							htmls += '<strong class="text-gray-dark">' + this.reg_id + '</strong>';
 							htmls += '<span style="padding-left:7px; font-size: 9pt"';
-							htmls += '<a href="javascript:void(0)" onclick="fn_editReply(' + this.rid + ', \'' + this.reg_id + '\', \'' + this.content + '\' )" style="padding-right:5px">수정</a>';
-		                    htmls += '<a href="javascript:void(0)" onclick="fn_deleteReply(' + this.rid + ')" >삭제</a>';
+							htmls += '<a href="javascript:void(0)" onclick="fn_editReply(' + this.rid + ', \'' + this.reg_id + '\', \'' + this.content + '\' )" style="padding-right:5px"> 수정 </a>';
+		                    htmls += '&nbsp; &nbsp; &nbsp; <a href="javascript:void(0)" onclick="fn_deleteReply(' + this.rid + ')" > 삭제 </a>';
 		                    htmls += '</span>';
 		                    htmls += '</span>';
 		                    htmls += this.content;
+		                    htmls += '<br><br>' + this.reg_dt;
 		                    htmls += '</p>';
 		                    htmls += '</div>';
 		                    
