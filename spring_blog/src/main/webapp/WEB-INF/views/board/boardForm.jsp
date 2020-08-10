@@ -10,12 +10,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Board</title>
 
-
+<!--  CK editor 사용을 위한 스크립트 -->
+<script src="https://cdn.ckeditor.com/ckeditor5/21.0.0/classic/ckeditor.js"></script>
 
 <script type="text/javascript">
+
 	$(document).on('click', '#btnSave', function(e) {
 		e.preventDefault();
-		
 		$("#form").submit();
 	});
 	
@@ -76,7 +77,7 @@
 				
 				<div class="mb-3">
 					<label for="content"> 내용 </label>
-					<form:textarea path="content" class="form-control" rows="5" name="content" id="content" placeholder="내용을 입력해 주세요"/>
+					<form:textarea path="content" class="form-control" rows="5" name="content" id="content" placeholder="내용을 입력해 주세요" />					
 				</div>
 				
 				<div class="mb-3">
@@ -97,6 +98,6 @@
 	
 	</article>
 
-
+<script src="${pageContext.request.contextPath}/resources/common/js/ckeditor.js"></script>
 </body>
 </html>
