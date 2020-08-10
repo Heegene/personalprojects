@@ -18,10 +18,10 @@
 <!--  Datasource 객체 설정  -->	
 
 <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-	<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
-	<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
-	<property name="username" value="tiger"/>
-	<property name="password" value="tiger"/>
+	<property name="driverClassName" value="#{datasource['jdbc.driverClassName']}" />
+	<property name="url" value="#{datasource['jdbc.url']}"/>
+	<property name="username" value="#{datasource['jdbc.username']}"/>
+	<property name="password" value="#{datasource['jdbc.password']}"/>
 </bean>
 
 <!-- SQL session factory 객체 설정 -->
