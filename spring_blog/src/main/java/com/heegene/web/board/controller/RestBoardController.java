@@ -26,11 +26,13 @@ public class RestBoardController {
 	@Inject
 	private BoardService boardService;
 	
+	// 댓글 조회
 	@RequestMapping(value = "/getReplyList", method=RequestMethod.POST)
 	public List<ReplyDto> getReplyList(@RequestParam("bid") int bid) throws Exception {
 		return boardService.getReplyList(bid);
 	}
 	
+	// 댓글 등록
 	@RequestMapping(value = "/saveReply", method=RequestMethod.POST)
 	public Map<String, Object> saveReply(@RequestBody ReplyDto replyDto) throws Exception {
 		Map<String, Object> result = new HashMap<>();
@@ -46,6 +48,33 @@ public class RestBoardController {
 		return result;
 	}
 	
+	// 댓글 삭제
+	@RequestMapping(value = "/deleteReply", method= {RequestMethod.GET, RequestMethod.POST})
+	public Map<String, Object> deleteReply(@RequestParam("rid") int rid) throws Exception {
+		Map<String, Object> result = new HashMap<>();
+		try {
+			boardService.deleteReply(rid);
+			result.put("status", "OK");
+		} catch (Exception e) {
+			result.put("status", "False");
+		}
+		return result;
+	}
+	
+	// 댓글 수정
+	@RequestMapping(value = "/updateReply", method= {RequestMethod.GET, RequestMethod.POST})
+	public Map<String, Object> updateReply(@RequestBody ReplyDto replyDto) throws Exception {
+		Map<String, Object> result = new HashMap<>();
+		try {
+			boardService.updateReply(replyDto);
+			result.put("status", "OK");
+		} catch (Exception e) {
+			result.put("status", "False");
+			
+		}
+		
+		return result;
+	}
 	
 
 }
