@@ -11,6 +11,7 @@ import com.heegene.common.Pagination;
 import com.heegene.common.Search;
 import com.heegene.web.board.dao.BoardDao;
 import com.heegene.web.board.dto.BoardDto;
+import com.heegene.web.board.dto.ReplyDto;
 
 @Service
 @Transactional
@@ -63,4 +64,33 @@ public class BoardServiceImpl implements BoardService {
 	public int getBoardListCnt(Search search) throws Exception {
 		return boardDao.getBoardListCnt(search);
 	}
+	
+	
+	
+	// 댓글기능부
+	
+	// 댓글 목록
+	@Override
+	public List<ReplyDto> getReplyList(int bid) throws Exception {
+		return boardDao.getReplyList(bid);
+	}
+	
+	// 댓글 작성
+	@Override
+	public int saveReply(ReplyDto replyDto) throws Exception {
+		return boardDao.saveReply(replyDto);
+	}
+	
+	// 댓글 수정
+	@Override
+	public int updateReply(ReplyDto replyDto) throws Exception {
+		return boardDao.updateReply(replyDto);
+	}
+	
+	// 댓글 삭제
+	@Override
+	public int deleteReply(int rid) throws Exception {
+		return boardDao.deleteReply(rid);
+	}
+	
 }

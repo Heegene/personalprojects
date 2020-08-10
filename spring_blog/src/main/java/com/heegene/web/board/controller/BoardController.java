@@ -14,6 +14,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.heegene.common.Pagination;
 import com.heegene.common.Search;
 import com.heegene.web.board.dto.BoardDto;
+import com.heegene.web.board.dto.ReplyDto;
 import com.heegene.web.board.service.BoardService;
 
 @Controller
@@ -73,6 +74,8 @@ public class BoardController {
 	@RequestMapping(value = "/getBoardContent", method=RequestMethod.GET)
 	public String getBoardContent(Model model, @RequestParam("bid") int bid) throws Exception {
 		model.addAttribute("boardContent", boardService.getBoardContent(bid));
+		model.addAttribute("replyDto", new ReplyDto());
+		// 게시글 조회 시 댓글 입력폼을 넣기 위해 댓글폼에서 사용할 DTO를 지정해 보내 줌
 		return "board/boardContent";
 	}
 	
