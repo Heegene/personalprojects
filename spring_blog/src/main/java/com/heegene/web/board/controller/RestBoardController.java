@@ -37,6 +37,7 @@ public class RestBoardController {
 		
 		try {
 			boardService.saveReply(replyDto);
+			result.put("status", "OK");
 		} catch (Exception e) {
 			e.printStackTrace();
 			result.put("status", "False");
