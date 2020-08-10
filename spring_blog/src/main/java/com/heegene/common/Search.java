@@ -3,6 +3,8 @@ package com.heegene.common;
 public class Search extends Pagination {
 	private String searchType;
 	private String keyword;
+	
+	
 	public String getSearchType() {
 		return searchType;
 	}

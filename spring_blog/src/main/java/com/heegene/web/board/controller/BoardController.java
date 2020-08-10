@@ -41,10 +41,6 @@ public class BoardController {
 		
 		search.pageInfo(page, range, listCnt);
 		
-		// pagination 객체 생성
-		Pagination pagination = new Pagination();
-		pagination.pageInfo(page, range, listCnt);
-		
 		model.addAttribute("pagination", search);
 		model.addAttribute("boardList", boardService.getBoardList(search));
 		return "board/index";
