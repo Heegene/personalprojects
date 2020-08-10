@@ -17,11 +17,10 @@
 	</select>
  	
  	<sql id="search">
- 
- 		<if test="searchType=='title' and keyword != null">
- 			AND TITLE LIKE '%'||#{keyword}||'%'
+  		<if test="searchType=='title' and keyword != null">
+ 			AND title LIKE '%'||#{keyword}||'%'
  		</if>
- 		<if test="searchType=='content' and keyword != null">
+ 		<if test="searchType=='Content' and keyword != null">
  			AND content LIKE '%'||#{keyword}||'%'
  		</if>
  		<if test="searchType=='reg_id' and keyword != null">
@@ -98,6 +97,25 @@
 	<select id="getBoardListCnt" resultType="int">
 		SELECT count(*) AS listCnt
 		FROM tbl_board
-		
-	</select> 		
+		<include refid="searchCnt"></include>
+	</select> 	
+	
+	
+	<sql id="searchCnt">
+ 		<if test="searchType=='title' and keyword != null">
+ 			WHERE title LIKE '%'||#{keyword}||'%'
+ 		</if>
+ 		<if test="searchType=='Content' and keyword != null">
+ 			WHERE Content LIKE '%'||#{keyword}||'%'
+ 		</if>
+ 		<if test="searchType=='reg_id' and keyword != null">
+ 			WHERE reg_id LIKE '%'||#{keyword}||'%'
+ 		</if>
+ 	
+ 	</sql>	
+	
+	
+	
+	
+	
  </mapper>
