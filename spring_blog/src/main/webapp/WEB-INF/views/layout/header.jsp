@@ -1,6 +1,5 @@
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-
 <!--  Bootstrap CSS -->
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
