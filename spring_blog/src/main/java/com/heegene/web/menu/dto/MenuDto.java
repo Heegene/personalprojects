@@ -9,6 +9,7 @@ public class MenuDto {
 	private String comment;
 	private String reg_id;
 	private String reg_dt;
+	
 	public int getMid() {
 		return mid;
 	}

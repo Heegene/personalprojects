@@ -3,11 +3,11 @@
 
 <script>
 
-$(document).on('click', '#btnSearch', function(e){
+$(document).on('click', '#btnSearchUp', function(e){
 	e.preventDefault();
 	var url = "${getBoardList}";
 	url = url + "?searchType=" + $('#searchType').val();
-	url = url + "&keyword=" + $('#keyword').val();
+	url = url + "&keyword=" + $('#keyword_above').val();
 	location.href = encodeURI(url);
 	console.log(url);
 });
@@ -51,8 +51,8 @@ $(document).on('click', '#btnSearch', function(e){
       </li>
     </ul>
     <form class="form-inline my-2 my-md-0">
-      <input class="form-control form-control-sm" type="text" placeholder="Search" id="keyword" value="${pagination.keyword}">
-      &nbsp; <button class="btn btn-sm btn-secondary" style= type="button" id="btnSearch">Go!</button>
+      <input class="form-control form-control-sm" type="text" placeholder="Search" id="keyword_above" value="${pagination.keyword}">
+      &nbsp; <button class="btn btn-sm btn-secondary" style= type="button" id="btnSearchUp">Go!</button>
     </form> 
   </div>
 </nav>
