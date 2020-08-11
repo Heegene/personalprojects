@@ -1,5 +1,19 @@
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
+<script>
+
+$(document).on('click', '#btnSearch', function(e){
+	e.preventDefault();
+	var url = "${getBoardList}";
+	url = url + "?searchType=" + $('#searchType').val();
+	url = url + "&keyword=" + $('#keyword').val();
+	location.href = encodeURI(url);
+	console.log(url);
+});
+
+
+</script>
 <!--  Bootstrap CSS -->
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
@@ -21,14 +35,12 @@
   <div class="collapse navbar-collapse" id="navbarsExample03">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Board<span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="${pageContext.request.contextPath}/board/getBoardList">Board<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Q&A</a>
+        <a class="nav-link" href="${pageContext.request.contextPath}/menu/getMenu">Q&A</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-      </li>
+      
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
         <div class="dropdown-menu" aria-labelledby="dropdown03">
@@ -39,7 +51,8 @@
       </li>
     </ul>
     <form class="form-inline my-2 my-md-0">
-      <input class="form-control" type="text" placeholder="Search">
-    </form>
+      <input class="form-control form-control-sm" type="text" placeholder="Search" id="keyword" value="${pagination.keyword}">
+      &nbsp; <button class="btn btn-sm btn-secondary" style= type="button" id="btnSearch">Go!</button>
+    </form> 
   </div>
 </nav>

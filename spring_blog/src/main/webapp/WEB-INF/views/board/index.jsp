@@ -81,7 +81,7 @@
 
 	<article>
 	<div class="container">
-		<h2>게시글 목록</h2>
+		<h2>Board</h2>
 		<div class="table-responsive">
 			<table class="table table-striped table-sm">
 				<colgroup>
