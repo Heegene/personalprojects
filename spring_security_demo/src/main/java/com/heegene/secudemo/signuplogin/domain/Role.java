@@ -8,7 +8,7 @@ import lombok.Getter;
 public enum Role {
 	ADMIN("ROLE_ADMIN"),
 	MEMBER("ROLE_MEMBER");
-	
+	// service에서 사용하는 enum객체
 
 	private String value;
 
