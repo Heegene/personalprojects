@@ -1,7 +1,7 @@
 # personal_projects
 개인 프로젝트를 담아 두는 저장소입니다. (최근순 정렬)
 
-spring_security_demo -> Spring Security를 이용한 회원가입/로그인/회원 페이지 입니다. (20.08.14)
+spring_security_demo -> Spring Security를 이용한 회원가입/로그인/회원 페이지 입니다. (20.08.14) <br>
 구현 화면은 이곳에서 확인하실 수 있습니다. -> <a href="https://contradicto-lee.tistory.com/entry/200814-Spring-Security-%EA%B5%AC%ED%98%84"> 티스토리 </a>
 
 spring_blog -> Spring MVC를 이용한 블로그 시스템입니다. (ver 1.0, 20.08.09) <br>
