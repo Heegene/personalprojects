@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<!-- xml 네임스페이스 명시 -->
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<!--  Header -->
+
+<div th:insert="common/header.html" id="header"></div>
+<!-- jsp의 include와 동일한 기능 -->
+
+<a th:href="@{/post}">글쓰기</a>
+<!--  @ 경로는 어플리케이션 설치경로 기준으로 하는 상대경로(http://localhost:8185/post 와 같은 기능 -->
+
+<!-- footer -->
+<div th:insert="common/footer.html" id="footer"></div>
+
+</body>
+</html>
