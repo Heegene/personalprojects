@@ -71,4 +71,29 @@ public class BoardService {
 		// pk 값을 where 조건으로 하여 데이터를 삭제하기 위한 method로, JPArepository 인터페이스에 정의되어 있음 
 	}
 	
+	@Transactional
+	public List<BoardDto> searchPosts(String keyword) {
+		List<BoardEntity> boardEntities = boardRepository.findByTitleContaining(keyword);
+		List<BoardDto> boardDtoList = new ArrayList<>();
+		
+		if (boardEntities.isEmpty()) {
+			return boardDtoList;
+		}
+		
+		for (BoardEntity boardEntity : boardEntities) {
+			boardDtoList.add(this.convertEntityToDto(boardEntity));
+		}
+		
+		return boardDtoList;
+	}
+	
+	private BoardDto convertEntityToDto(BoardEntity boardEntity) {
+		return BoardDto.builder()
+				.id(boardEntity.getId())
+				.title(boardEntity.getTitle())
+				.content(boardEntity.getContent())
+				.writer(boardEntity.getWriter())
+				.createdDate(boardEntity.getCreatedDate())
+				.build();
+	}
 }
