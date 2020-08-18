@@ -51,7 +51,16 @@ public class BoardController {
 		return "board/detail.html";
 	}
 	
-	// 게시글 수정
+	// 게시글 수정화면
+	@GetMapping("/post/edit/{no}")
+	public String edit(@PathVariable("no") Long no, Model model) {
+		BoardDto boardDto = boardService.getPost(no);
+		
+		model.addAttribute("boardDto", boardDto);
+		return "board/update.html";
+	}
+	
+	// 게시글 수정저장
 	@PutMapping("/post/edit/{no}")
 	public String update(BoardDto boardDto) {
 		boardService.savePost(boardDto);
