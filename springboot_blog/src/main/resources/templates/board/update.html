@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form th:action="@{'/post/edit/' + ${boardDto.id}}" method="post">
+		<input type="hidden" name="_method" value="put" />
+		<!-- 마찬가지로 RESTful API 작성을 위한 부분 / controller에서 put method로 매핑됨 -->
+		<input type="hidden" name="id" th:value="${boardDto.id}" />
+		<!-- hidden 타입으로 게시글 id를 넘겨서 JPA에서 insert와 update를 같은 메서드로 사용하기 위함 
+		     같은 메서드를 호출하되, id 값이 없으면 insert가 되고 이미 존재하면 update가 되도록 동작 
+		 -->
+		
+		
+		
+		제목 : <input type="text" name="title" th:value="${boardDto.title}"> <br>
+		작성자 : <input type="text" name="writer" th:value="${boardDto.writer}"> <br>
+		<textarea name="content" th:text="${boardDto.content}"></textarea> <br>
+		
+		<input type="submit" value="수정">
+		
+	</form>
+</body>
+</html>
