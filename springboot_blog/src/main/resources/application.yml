@@ -15,10 +15,10 @@ jpa:
 
 logging:
   level:
-  org:
+   org:
     hibernate:
-    SQL: DEBUG
-    type:
-      descriptor:
-        sql:
-          BasicBinder: TRACE
+      SQL: DEBUG
+      type:
+        descriptor:
+          sql:
+            BasicBinder: TRACE
