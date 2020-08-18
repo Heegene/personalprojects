@@ -19,7 +19,7 @@ public abstract class TimeEntity {
 	// 데이터 조작 시 자동으로 날짜를 수정해주는 JPA의 Auditing 기능 사용
 	@CreatedDate // Entity가 처음 저장될 때 생성일을 주입
 	@Column(updatable = false) // 생성일은 update가 필요하지 않으므로 updatable false설정
-	private LocalDateTime createDate; 
+	private LocalDateTime createdDate; 
 	
 	@LastModifiedDate
 	private LocalDateTime modifiedDate;
