@@ -15,6 +15,37 @@
 <a th:href="@{/post}">글쓰기</a>
 <!--  @ 경로는 어플리케이션 설치경로 기준으로 하는 상대경로(http://localhost:8185/post 와 같은 기능 -->
 
+<table>
+	<thead>
+		<tr>
+			<th class="one wide"> 번호 </th>
+			<th class="ten wide"> 제목 </th>
+			<th class="two wide"> 작성자 </th>
+			<th class="three wide"> 작성일 </th>
+		</tr>
+	</thead>
+	
+	<tbody>
+		<!-- Contents -->
+		<tr th:each="board : ${boardList}">
+			<td>
+				<span th:text="${board.id}"></span>
+			</td>
+			<td>
+				<a th:href="@{'/post' + ${board.id}}">
+					<span th:text="${board.title}"></span>
+				</a>
+			</td>
+			<td>
+				<span th:text="${board.writer}"></span>
+			</td>
+			<td>
+				<span th:text="${#temporals.format(board.createDate, 'yyyy-MM-dd HH:mm')}"></span>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
 <!-- footer -->
 <div th:insert="common/footer.html" id="footer"></div>
 
