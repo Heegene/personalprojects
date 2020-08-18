@@ -19,7 +19,7 @@
 		<button>수정</button>
 	</a>
 	
-	<form id="delete-form" th:action=@{'/post/' + ${boardDto.id}}" method="post">
+	<form id="delete-form" th:action="@{'/post/' + ${boardDto.id}}" method="post">
 		<!-- RESTful API 작성을 위해 hiddenHttpMethodFilter 이용 
 		     form 태그의 method는 post이지만 실제 컨트롤러에서는 delete로 매핑됨 -->
 		<input type="hidden" name="_method" value="delete">
