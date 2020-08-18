@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.heegene.blog.dto.BoardDto;
 import com.heegene.blog.service.BoardService;
@@ -78,5 +79,14 @@ public class BoardController {
 	// 유동적으로 변하는 Path variable 처리를 위해 annotation 추가
 	// URL 매핑부에서 {변수} 처리를 하면 method parameter로 해당 변수를 받을 수 있음
 	
+	// 게시글 검색
+	@GetMapping("/board/search")
+	public String search(@RequestParam(value="keyword") String keyword, Model model) {
+		List<BoardDto> boardDtoList = boardService.searchPosts(keyword);
+		
+		model.addAttribute("boardList", boardDtoList);
+		return "board/list.html";
+		
+	}
 	
 }
