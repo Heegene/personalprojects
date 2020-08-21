@@ -127,7 +127,7 @@ public class BoardService {
 		curPageNum = (curPageNum <= 3) ? 1 : curPageNum - 2;
 		
 		
-		// 페이지 번호 할당
+		// 페이지 번호 할당 전달
 		for (int val = curPageNum, idx = 0; val <= blockLastPageNum; val++, idx++) {
 			pageList[idx] = val;
 		}

@@ -54,7 +54,7 @@
 	<button>검색하기</button>
 </form>
 
-<!-- pagination 테스트 -->
+<!-- pagination 구현부-->
 <div>
 	<span th:each="pageNum : ${pageList}" th:inline="text">
 		<a th:href="@{'/?page=' + ${pageNum}}">[[${pageNum}]]</a>

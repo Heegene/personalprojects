@@ -24,7 +24,7 @@ public class BoardController {
 	// 게시글 리스트 
 	@GetMapping("/")
 	public String list(Model model, @RequestParam(value="page", defaultValue= "1") Integer pageNum) {
-		// 페이징을 위해 page이름으로 넘어오면 파라미터를 받고 없으면 디폴트로 1을 넣어줌
+		// 페이징을 위해 page이름으로 넘어오면 파라미터를 받고 없으면 디폴트로 1을 넣어줌(1페이지부터 시작하도록)
 		// 페이지 번호는 서비스 계층의 getPageList 함수로 넘김
 		List<BoardDto> boardList = boardService.getBoardList(pageNum);
 		Integer[] pageList = boardService.getPageList(pageNum);
@@ -33,7 +33,7 @@ public class BoardController {
 		model.addAttribute("pageList", pageList);
 		return "board/list.html";
 	}
-	// 게시글 작성화면
+	// 게시글 작성화면 
 	@GetMapping("/post")
 	public String write() {
 		return "board/write.html";
