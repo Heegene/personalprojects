@@ -34,7 +34,7 @@ public class BoardService {
 	
 	@Transactional
 	public List<BoardDto> getBoardList(Integer pageNum) {
-		Page<BoardEntity> page = boardRepository.findAll(PageRequest.of(pageNum - 1, PAGE_POST_COUNT, Sort.by(Sort.Direction.ASC, "createdDate")));
+		Page<BoardEntity> page = boardRepository.findAll(PageRequest.of(pageNum - 1, PAGE_POST_COUNT, Sort.by(Sort.Direction.DESC, "createdDate")));
 		// repository의 find() 관련 메서드를 호출할 때 pageable 인터페이스를 구현한 클래스(pagerequest.of)를 전달하면 페이징 가능
 		// 첫 번째 인자: limit(현재 페이지 번호-1)로 적용, SQL조회시 사용되는 limit과 실제 페이지 번호가 차이가 있기 때문
 		// 두 번째 인자: offset (몇 개를 가져올지)
