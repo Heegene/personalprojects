@@ -54,12 +54,12 @@
 	<button>검색하기</button>
 </form>
 
-<!-- pagination -->
+<!-- pagination 테스트 -->
 <div>
 	<span th:each="pageNum : ${pageList}" th:inline="text">
 		<a th:href="@{'/?page=' + ${pageNum}}">[[${pageNum}]]</a>
 	</span>
-</div>
+</div> 
 
 <!-- footer -->
 <div th:insert="common/footer.html" id="footer"></div>
