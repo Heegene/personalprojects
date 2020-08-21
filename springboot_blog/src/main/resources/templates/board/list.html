@@ -54,6 +54,12 @@
 	<button>검색하기</button>
 </form>
 
+<!-- pagination -->
+<div>
+	<span th:each="pageNum : ${pageList}" th:inline="text">
+		<a th:href="@{'/?page=' + ${pageNum}}">[[${pageNum}]]</a>
+	</span>
+</div>
 
 <!-- footer -->
 <div th:insert="common/footer.html" id="footer"></div>
